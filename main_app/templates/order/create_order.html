@@ -1,0 +1,192 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    /* === ULTIMATE PROFESSIONAL MOBILE TRANSFORMATION === */
+@media screen and (max-width: 600px) {
+    
+    /* 1. Page Background: Light grey for that "App" feel */
+    body { background-color: #f8f9fa !important; }
+
+    .container, .form-wrapper {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* 2. Main Card: White background with clean padding */
+    .royal-form-card {
+        width: 94% !important; /* Leaving small gap on edges */
+        margin: 15px auto !important;
+        padding: 25px 15px !important;
+        border-radius: 15px !important;
+        background: #ffffff !important;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08) !important; /* Soft premium shadow */
+        border: none !important;
+    }
+
+    /* 3. Item Banner: Fixing the "Badami" Shade issue */
+    .royal-form-card div[style*="background"], 
+    .form-header div {
+        background: linear-gradient(135deg, #fff9e6 0%, #fdf6e3 100%) !important;
+        margin: -10px -15px 25px -15px !important; 
+        padding: 20px !important;
+        border: none !important;
+        border-left: 6px solid #D4AF37 !important; /* Thick gold border on left only */
+        text-align: left !important;
+    }
+
+    .royal-form-card h1 { font-size: 1.8rem !important; font-weight: 900 !important; color: #222 !important; }
+    .royal-form-card h3 { font-size: 1.3rem !important; color: #D4AF37 !important; margin-bottom: 5px !important; }
+
+    /* 4. Input Fields: Modern & Sleek */
+    input[type="number"], input[type="text"], select {
+        height: 55px !important;
+        border: 1.5px solid #eee !important;
+        background: #fcfcfc !important;
+        border-radius: 10px !important;
+        font-size: 16px !important;
+        padding-left: 15px !important;
+        transition: 0.3s;
+    }
+    input:focus { border-color: #D4AF37 !important; background: #fff !important; }
+
+    /* 5. Payment Options: Clean Professional Borders */
+    .payment-section label {
+        display: flex !important;
+        align-items: center;
+        padding: 18px !important;
+        border: 2px solid #f0f0f0 !important; /* Subtle border */
+        border-radius: 12px !important;
+        margin-bottom: 15px !important;
+        background: #fff !important;
+        transition: 0.3s;
+    }
+    
+    /* When selected, border becomes gold */
+    .payment-section input[type="radio"]:checked + span {
+        font-weight: bold;
+    }
+
+    /* 6. Proceed Button: The Hero Element */
+    .btn-royal-submit, #proceed-btn {
+        width: 100% !important;
+        height: 60px !important;
+        background: #1a1a1a !important; /* Deep black */
+        color: #D4AF37 !important; /* Gold text */
+        font-size: 1.1rem !important;
+        font-weight: 800 !important;
+        border-radius: 12px !important;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        box-shadow: 0 8px 15px rgba(0,0,0,0.2) !important;
+        margin-top: 20px !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+</style>
+
+<div class="form-wrapper">
+    <div class="royal-form-card">
+        <div class="form-header">
+            <h1>Start Your Order</h1>
+            {% if product %}
+                <div style="background: #fffcf0; border: 1px dashed #D4AF37; padding: 10px; margin: 10px 0; border-radius: 8px;">
+                    <h3 style="color: #D4AF37 !important; margin: 0;">Item: {{ product.name }}</h3>
+                    <p style="margin: 5px 0 0 0; font-weight: bold;">Price per unit: ₹<span id="unit-price">{{ product.price }}</span></p>
+                </div>
+            {% endif %}
+        </div>
+
+        <form method="POST" action="" id="order-form">
+            {% csrf_token %}
+            
+            <div class="form-fields-container">
+                {{ form.as_p }}
+            </div>
+
+            <div class="payment-section" style="margin: 20px 0; background: #fff; padding: 15px; border-radius: 10px; border: 1px solid #ddd;">
+                <h4 style="color: #2C2C2C; margin-bottom: 15px; font-size: 1.1rem; font-weight: bold;">Select Payment Method:</h4>
+
+                <label style="display: block; cursor: pointer; margin-bottom: 10px; padding: 10px; border: 1px solid #ccc; border-radius: 8px;">
+                    <input name="payment_type" type="radio" value="cod" checked onclick="toggleUPI('hide')" />
+                    <span style="font-size: 1rem; color: #333; margin-left: 10px; font-weight: bold;">Cash on Delivery (COD)</span>
+                </label>
+
+                <label style="display: block; cursor: pointer; margin-bottom: 10px; padding: 10px; border: 1px solid #D4AF37; border-radius: 8px; background-color: #fffcf0;">
+                    <input name="payment_type" type="radio" value="online" onclick="toggleUPI('show')" id="pay-online-radio" />
+                    <span style="font-size: 1rem; color: #333; margin-left: 10px; font-weight: bold;">Pay Online (UPI App)</span>
+                </label>
+
+                <div id="upi-box" style="display: none; text-align: center; margin-top: 15px; border-top: 2px dashed #D4AF37; padding-top: 15px;">
+                    <p style="color: #777; font-size: 0.9rem; margin-bottom: 15px;">Tap the button below to pay securely via your UPI app. After paying, click <b>Proceed Next</b> below to place your order.</p>
+                    
+                    <a id="smart-upi-btn" href="#" style="display: inline-flex; justify-content: center; align-items: center; width: 100%; max-width: 300px; background-color: #29b6f6; color: white; padding: 12px; border-radius: 25px; font-weight: bold; text-decoration: none; font-size: 1.1rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                        <i class="fas fa-mobile-alt" style="margin-right: 10px; font-size: 1.3rem;"></i> Pay <span id="btn-amount-display" style="margin-left: 5px;">₹{{ product.price }}</span>
+                    </a>
+                    <p style="font-size: 0.8rem; color: #999; margin-top: 10px;">A1 Bakery UPI: <strong>9765078619@fam</strong></p>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-royal-submit" id="proceed-btn">
+                    Proceed Next <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    // 1. Core Variables Setup
+    const unitPrice = parseFloat("{{ product.price }}");
+    const upiID = "9765078619@fam";
+    const bizName = "A1_Bakery"; // Safe for deep linking without spaces
+
+    // 2. Dynamic Price & Smart Link Generator
+    function updateSmartUPI() {
+        // Find the quantity input generated by Django form
+        const qtyInput = document.querySelector('input[name="quantity"]');
+        
+        // Calculate total
+        const qty = (qtyInput && qtyInput.value > 0) ? qtyInput.value : 1;
+        const total = unitPrice * qty;
+        
+        // Update the visual button text
+        document.getElementById('btn-amount-display').innerText = "₹" + total;
+
+        // Create the PhonePe/GPay safe UPI link
+        // tn= added as transaction note to prevent PhonePe strict errors
+        const upiLink = `upi://pay?pa=${upiID}&pn=${bizName}&tn=A1_Bakery_Order&am=${total}&cu=INR`;
+        
+        // Attach link to the button
+        document.getElementById('smart-upi-btn').href = upiLink;
+    }
+
+    // 3. UI Toggle for COD vs Online
+    function toggleUPI(action) {
+        const upiBox = document.getElementById('upi-box');
+        if (action === 'show') {
+            upiBox.style.display = 'block';
+            updateSmartUPI(); // Ensure price is fresh when shown
+        } else {
+            upiBox.style.display = 'none';
+        }
+    }
+
+    // 4. Listen for Quantity changes in real-time
+    const qtyField = document.querySelector('input[name="quantity"]');
+    if(qtyField) {
+        qtyField.addEventListener('input', updateSmartUPI);
+    }
+    
+    // NOTE: The old UTR validation function was completely removed. 
+    // Now the form will submit natively to Django when Proceed Next is clicked.
+</script>
+
+{% endblock %}

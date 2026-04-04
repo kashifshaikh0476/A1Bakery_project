@@ -1,0 +1,266 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>A1 Bakery</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}?v=2.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+    
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+    /* --- YE PART BUTTON KO NAVBAR MEIN FIT KAREGA --- */
+    .nav-links li a.btn-signup {
+        border: 2px solid #D4AF37 !important;
+        height: 36px !important;             
+        line-height: 32px !important;        
+        margin-top: 14px !important;         
+        display: inline-flex !important;
+        align-items: center !important;
+        padding: 0 15px !important;
+        border-radius: 6px !important;
+        background: transparent !important;
+        transition: all 0.3s ease;
+    }
+
+    .nav-links li a.btn-signup:hover {
+        background-color: #D4AF37 !important;
+        color: #000 !important;
+    }
+
+    /* Professional Logout Modal Styling */
+    #logoutModal {
+        border-radius: 15px;
+        max-width: 450px;
+        background-color: #1a1a1a; 
+        color: white;
+        border: 2px solid #D4AF37; 
+    }
+    
+    .modal .modal-footer {
+        background-color: #1a1a1a;
+        border-top: none !important; /* Line hata di taaki aur clean lage */
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+        gap: 15px;
+        /* Padding thodi change ki taaki buttons thoda upar shift ho jayein */
+        padding: 10px 20px 30px 20px !important; 
+        height: auto !important; 
+    }
+    
+    .modal-footer form {
+        margin: 0 !important; 
+    }
+
+    /* Dono buttons ki same height aur perfect text centering ke liye */
+    .btn-confirm-logout, .btn-cancel-logout {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        height: 42px !important;
+        line-height: normal !important; /* YE line text ko wapas upar center mein layegi */
+        padding: 0 24px !important;
+        font-weight: 800 !important;
+        border-radius: 25px !important;
+        letter-spacing: 1px !important;
+    }
+
+    .btn-confirm-logout {
+        background-color: #D4AF37 !important;
+        color: black !important;
+    }
+
+    .btn-cancel-logout {
+        background-color: transparent !important;
+        color: #D4AF37 !important;
+        border: 2px solid #D4AF37 !important;
+    }
+  </style>
+</head>
+<body>
+
+    <script>
+        window.addEventListener('load', function() {
+            var loader = document.getElementById('preloader');
+            loader.style.opacity = '0'; 
+            setTimeout(function(){
+                loader.style.display = 'none'; 
+            }, 500);
+        });
+    </script>
+
+    <header class="navbar-fixed">
+   <nav class="royal-nav">
+    <div class="nav-container nav-wrapper">
+        <a href="{% url 'home' %}" class="brand-logo modern-logo left">
+            <img src="{% static 'images/logo.png' %}" alt="A1 Logo" class="nav-header-logo">
+            A1<span>Bakery</span>
+        </a>
+
+        <a href="#" data-target="mobile-nav" class="sidenav-trigger right hide-on-large-only">
+            <i class="fas fa-bars" style="color: #D4AF37; font-size: 24px;"></i>
+        </a>
+
+        <ul class="nav-links right hide-on-med-and-down">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About</a></li> 
+            <li><a href="{% url 'shop' %}">Product</a></li>
+            
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'order' %}">My Orders</a></li>
+                <li><a href="#logoutModal" class="modal-trigger">Logout</a></li>
+                
+                {% if user.is_superuser %}
+                    <li>
+                        <a href="{% url 'admin_order' %}" style="color: #ff4d4d; font-weight: bold;">
+                            <i class="fas fa-crown" style="color: #ff4d4d; text-shadow: 0 0 8px rgba(255, 77, 77, 0.4); margin-right: 5px;"></i> Orders
+                        </a>
+                    </li>
+                {% endif %}
+
+            {% else %}
+                <li><a href="{% url 'login' %}">Log In</a></li>
+                <li><a href="{% url 'signup' %}" class="btn-signup">Sign Up</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+</header>
+
+<ul class="sidenav" id="mobile-nav" style="background-color: #1a1a1a;">
+    <li class="center-align" style="padding: 30px 20px 10px;">
+        <img src="{% static 'images/logo.png' %}" width="70" alt="Logo">
+        <h5 style="color: #D4AF37; font-family: 'Playfair Display', serif; margin-top: 10px;">A1 Bakery</h5>
+        <p style="color: #888; font-size: 0.8rem; font-style: italic;">"Eat a taste of happiness"</p>
+    </li>
+    
+    <li><div class="divider" style="background-color: #333;"></div></li>
+
+    <li><a href="{% url 'home' %}" class="white-text"><i class="fas fa-home gold-text"></i> Home</a></li>
+    <li><a href="{% url 'about' %}" class="white-text"><i class="fas fa-info-circle gold-text"></i> About Us</a></li>
+    <li><a href="{% url 'shop' %}" class="white-text"><i class="fas fa-birthday-cake gold-text"></i> Our Products</a></li>
+
+    {% if user.is_authenticated %}
+        <li><a href="{% url 'order' %}" class="white-text"><i class="fas fa-shopping-bag gold-text"></i> My Orders</a></li>
+        
+        {% if user.is_superuser %}
+            <li><div class="divider" style="background-color: #333;"></div></li>
+            <li>
+                <a href="{% url 'admin_order' %}" style="color: #ff4d4d; font-weight: bold;">
+                    <i class="fas fa-crown" style="color: #ff4d4d; text-shadow: 0 0 8px rgba(255, 77, 77, 0.4);"></i> Admin Dashboard
+                </a>
+            </li>
+        {% endif %}
+
+        <li><div class="divider" style="background-color: #333;"></div></li>
+        <li>
+            <a href="#logoutModal" class="modal-trigger sidenav-close gold-text" style="font-weight: bold;">                <i class="fas fa-sign-out-alt gold-text"></i> Logout
+            </a>
+        </li>
+    {% else %}
+        <li><div class="divider" style="background-color: #333;"></div></li>
+        <li style="padding: 10px 30px;">
+            <a href="{% url 'login' %}" class="btn-mobile-login">
+                <i class="fas fa-sign-in-alt"></i> Login
+            </a>
+        </li>
+        <li style="padding: 0 30px;">
+            <a href="{% url 'signup' %}" class="btn-mobile-signup">
+                <i class="fas fa-user-plus"></i> Create Account
+            </a>
+        </li>
+    {% endif %}
+</ul>
+
+  <main class="container">
+    {% block content %}
+    {% endblock %}
+  </main>
+
+  <div id="logoutModal" class="modal">
+    <div class="modal-content center-align">
+        <h4 style="font-family: 'Sacramento', cursive; color: #D4AF37; font-size: 3rem; margin-bottom: 0;">A1 Bakery</h4>
+        <div style="height: 2px; background: #D4AF37; width: 60px; margin: 0 auto 20px;"></div>
+        <p style="font-size: 1.3rem; font-weight: 500;">Are you sure you want to sign out?</p>
+        <p style="color: #888; font-size: 0.9rem;">You will need to login again to manage your orders.</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect btn-flat btn-cancel-logout">STAY HERE</a>
+        
+        <form action="{% url 'logout' %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="waves-effect waves-light btn btn-confirm-logout">
+                Yes, Sign Out
+            </button>
+        </form>
+    </div>
+  </div>
+
+  <footer class="final-royal-footer">
+    <div class="ribbon-wrapper">
+        <div class="gold-ribbon">~ Connect With Us ~</div>
+    </div>
+    <div class="footer-inner-container">
+        <div class="footer-column brand-column">
+            <div class="logo-lockup">
+                <img src="{% static 'images/logo.png' %}" alt="Logo" class="footer-logo-final">
+                <span class="brand-text-final">A1 Bakery</span>
+            </div>
+            <p class="brand-tagline">"Eat a taste of happiness"</p>
+            <div class="info-block">
+                <p><i class="fas fa-map-marker-alt gold-icon"></i> Misri Khan Ka Bada, Malegaon</p>
+                <p><i class="fas fa-phone-alt gold-icon"></i> +91 8421857457</p>
+                <p><i class="fas fa-envelope gold-icon"></i> a1bakery@gmail.com</p>
+            </div>
+        </div>
+        <div class="footer-column links-column">
+            <h4 class="column-title">Quick Menu</h4>
+            <div class="title-underline"></div>
+            <ul class="final-links">
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'shop' %}">Our Menu</a></li>
+                <li><a href="{% url 'about' %}">Our Story</a></li>
+                <li><a href="{% url 'signup' %}">Join Membership</a></li>
+            </ul>
+        </div>
+        <div class="footer-column social-column">
+            <h4 class="column-title">Follow Us</h4>
+            <div class="title-underline"></div>
+            <div class="final-social-icons">
+                <a href="#" class="icon-box fb"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="icon-box insta"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/918421857457" class="icon-box wa"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <div class="footer-bottom-text">&copy; 2025 A1 Bakery. <br>All Rights Reserved.</div>
+        </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.2/vanilla-tilt.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 1. Modals initialize 
+        var modals = document.querySelectorAll('.modal');
+        M.Modal.init(modals, { opacity: 0.8, dismissible: true });
+
+        // 2. Sidenav initiaze
+        var sidenavs = document.querySelectorAll('.sidenav');
+        M.Sidenav.init(sidenavs, { 
+            edge: 'right',
+            draggable: true 
+        });
+    });
+</script>
+
+</body>
+</html>

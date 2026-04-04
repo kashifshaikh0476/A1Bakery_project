@@ -1,0 +1,2143 @@
+/* =========================================
+   MAIN BODY BACKGROUND UPDATE
+   ========================================= */
+
+body {
+    /* 1. Backup Color (Agar internet slow ho toh ye dikhega) */
+    background-color: #FFF8E7; 
+
+    /* 2. THE NEW BACKGROUND IMAGE (Subtle Cream Texture) */
+    /* Ye link ek free texture ka hai jo bakery ke liye perfect hai */
+    background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+
+    /* 3. Image ko repeat karwayenge taaki poori screen bhar jaye */
+    background-repeat: repeat;
+
+    /* Baaki purani settings same rahengi */
+    font-family: 'Avenir', 'Segoe UI', sans-serif;
+    color: #2C2C2C; /* Text color dark rakha taaki texture par saaf dikhe */
+    margin: 0;
+    padding: 0;
+}
+  .img-home2 {
+    float: right;
+    clear: both;
+    display: flex;
+    
+  }
+  .bee-img{
+    max-width: 10%;
+    margin-top: 10px; 
+  }
+.content {
+  max-width: 30%;
+  height: auto;
+  text-align: center;
+  white-space: pre-wrap;
+  font-family: adobe-garamond-pro;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  letter-spacing: .02em;
+  line-height: 1.6em;
+  text-transform: none;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+
+}
+
+.card-content{
+  font-family: Avenir;
+}
+.card-title{
+  font-family: Avenir;
+}
+.span{
+  float: left;
+  clear:both;
+  max-width: 30%;
+}
+
+
+  main {
+    flex: 1 0 auto;
+  }
+
+  
+  footer {
+    padding-top: 0;
+    text-align: right;
+    
+  }
+
+  
+.home-h1{ 
+  font-family: 'Sacramento' !important;
+  width: 50%;
+  float: left;
+  clear: both;
+  margin: 0;
+}
+.header-h1{
+  font-family: Avenir;
+}
+.shop-h1{
+  font-family: 'Sacramento';
+}
+
+nav{
+  height: auto;
+  background-color:black;
+}
+
+
+nav .brand-logo{
+  font-family: 'Sacramento';
+}
+
+.create{
+  font-family: Avenir;
+}
+
+.col{
+  font-family: Avenir;
+}
+.sqs-col-4{
+  width: 33.33%;
+ 
+}
+
+[class*=sqs-col] {
+  float: left;
+  justify-content: center;
+  max-width: 10%;
+  display: flex;
+
+   
+}
+.page-footer{
+  background-color:#343638;
+  
+}
+.card-order{
+  color: black;
+}
+
+.card-content:hover{
+  background-color: black;
+  color: white;
+}
+.card-action:hover{
+  background-color: black;
+  color: white;
+}
+.yellow-text.text-darken-4:hover{
+  color: white !important;
+}
+a{
+  color:white;
+ }
+a:hover{
+  color: grey;
+}
+
+.contact-info{
+  font-family: Avenir;
+}
+
+.hours{
+  font-family: Avenir;
+}
+@media only screen and (max-width: 550px) {
+  
+  ul{
+    
+    padding-top: 50px;
+    
+  }
+
+  .page-footer{
+    margin-left: 0px;
+
+  }
+
+  .col.sqs-col-4.span-4 {
+    justify-content: left;
+    align-items: center;
+    float: left;
+    word-spacing: 10px;
+    padding: 10px; 
+    border: 1px solid red;
+  }
+
+
+
+}
+/* =========================================
+   ROYAL FOOTER STYLING
+   ========================================= */
+footer.page-footer {
+    background-color: #2C2C2C; /* Deep Blackish-Grey for contrast */
+    color: #FFFBF0; /* Cream Text */
+    padding: 30px 0;
+    margin-top: auto;
+    border-top: 4px solid var(--royal-gold); /* Gold border on top */
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Social Icons Styling */
+.social-icons {
+    display: flex;
+    gap: 25px;
+}
+
+.social-link {
+    font-size: 24px;
+    color: #D4AF37; /* Royal Gold Color */
+    transition: all 0.3s ease;
+    background: rgba(255,255,255,0.1); /* Halka sa background circle */
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; /* Gol Circle */
+}
+
+.social-link:hover {
+    background-color: #D4AF37; /* Hover par Gold Background */
+    color: #2C2C2C; /* Icon Dark ho jayega */
+    transform: translateY(-5px); /* Thoda upar uthega */
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.6); /* Glowing Effect */
+}
+
+/* Copyright Text */
+.copyright-text {
+    font-family: 'Avenir', sans-serif;
+    font-size: 14px;
+    opacity: 0.8;
+    letter-spacing: 1px;
+}
+
+/* Admin Link Styling */
+.admin-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.admin-link {
+    font-size: 12px;
+    color: #777; /* Discrete Grey */
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1px solid #555;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.admin-link:hover {
+    color: white;
+    border-color: white;
+}
+
+/* =========================================
+   ROYAL HEADER / NAVBAR
+   ========================================= */
+
+/* 1. The Main Bar */
+.royal-nav {
+    background-color: #2C2C2C; /* Dark background to match footer */
+    height: 80px; /* Fixed height */
+    border-bottom: 3px solid #D4AF37; /* The "Golden Touch" line */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Shadow for depth */
+    display: flex;
+    align-items: center;
+    position: sticky; /* Chipka rahega top par */
+    top: 0;
+    z-index: 1000;
+}
+
+/* =========================================
+   HEADER ALIGNMENT FIX (Right Shift)
+   ========================================= */
+
+/* 1. Container ko faila do (Spread out) */
+.nav-container {
+    width: 95%; 
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    height: 100%;
+}
+
+/* 2. Logo Styling (Thoda Left margin agar chipak raha ho) */
+.brand-logo {
+    font-family: 'Sacramento', cursive !important;
+    font-size: 38px;
+    color: #D4AF37 !important;
+    text-decoration: none;
+    white-space: nowrap; /* Logo tute na */
+    z-index: 1001;
+}
+
+/* 3. Links ko Right mein Chipka do */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px; /* Links ke beech ka gap badhaya */
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    margin-left: auto; /* Ye ensure karega ki links right mein hi rahein */
+}
+/* Hover Effect: Gold Underline Animation */
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #D4AF37; /* Gold Line */
+    transition: width 0.3s;
+}
+
+.nav-links li a:hover {
+    color: #D4AF37; /* Text turns Gold */
+}
+
+.nav-links li a:hover::after {
+    width: 100%; /* Line expands */
+}
+
+/* 4. Special Buttons (Sign Up / Log Out) */
+.btn-signup, .btn-logout {
+    border: 1px solid #D4AF37;
+    padding: 8px 20px !important;
+    border-radius: 20px;
+    color: #D4AF37 !important;
+}
+
+.btn-signup:hover, .btn-logout:hover {
+    background-color: #D4AF37;
+    color: #2C2C2C !important; /* Text becomes dark on Gold bg */
+}
+
+/* Admin Link (Special) */
+.admin-nav-link {
+    color: #ff6b6b !important; /* Light Red to stand out */
+    font-size: 13px !important;
+}
+/* =========================================
+   ROYAL TEXT BANNER (Dark & Gold)
+   ========================================= */
+.royal-banner {
+    background-color: #2C2C2C;  /* Wahi Dark rang jo Header/Footer mein hai */
+    border-top: 3px solid #D4AF37;    /* Upar Gold Line */
+    border-bottom: 3px solid #D4AF37; /* Neeche Gold Line */
+    text-align: center;
+    padding: 60px 20px;
+    margin-top: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+/* "Eat a taste of happiness" styling */
+.royal-quote {
+    font-family: 'Sacramento', cursive !important; /* Italic Style Font */
+    font-size: 52px;
+    color: #D4AF37; /* GOLD Color */
+    margin: 0 0 15px 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Thoda 3D effect */
+}
+
+/* "Sweeten your day..." styling */
+.royal-subtext {
+    font-family: 'Avenir', sans-serif;
+    font-size: 20px;
+    color: #FFFBF0; /* Cream Color (Padhne mein aasaan) */
+    font-style: italic; /* Thoda teercha style */
+    font-weight: 300;
+    margin-bottom: 25px;
+}
+
+/* Beech ki choti Gold Line */
+.royal-divider {
+    height: 2px;
+    width: 150px;       /* Line ki lambai */
+    background-color: #D4AF37;
+    margin: 0 auto 25px auto; /* Center mein rakhne ke liye */
+}
+
+/* Location Text Styling */
+.royal-location {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 16px;
+    color: #cccccc; /* Halka Grey taaki aankhon par zor na pade */
+    line-height: 1.8;
+    letter-spacing: 0.5px;
+}
+
+/* =========================================
+   FORCE 3-COLUMN GRID (Ek Line Mein 3)
+   ========================================= */
+
+/* 1. Container ko bolo: Mujhe exactly 3 columns chahiye */
+/* Update: 4 Columns Logic */
+/* Update: Left Gap Fix & Full Width */
+.row {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important; /* 4 Products */
+    gap: 15px !important;       /* Beech ka gap thoda kam kiya */
+    width: 100% !important;     /* 96% ki jagah Pura 100% kiya */
+    padding-left: 0 !important; /* Left side ki padding hatayi */
+    padding-right: 0 !important;
+    margin: 30px 0 !important;  /* 'auto' hata diya taaki left se chipak ke shuru ho */
+}
+
+/* 2. Card ke box ko bolo: Full width le lo (apne column ke hisaab se) */
+.col.s12.m4, .col {
+    width: 90% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    flex: none !important; /* Purana flexbox hatao */
+}
+
+/* 3. Card Size & Look */
+.card {
+    height: 300px !important;    /* Height fix */
+    display: flex !important;
+    flex-direction: column !important;
+    background: #fff !important;
+    border-radius: 20px !important;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+    overflow: hidden !important;
+}
+
+/* 4. Photo Setting */
+.card-image {
+    height: 250px !important;
+    width: 100% !important;
+}
+
+.card-image img {
+    height: 100% !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+/* 5. Mobile ke liye (Mobile par 3 bahut chote dikhenge, isliye wahan 1 kar diya) */
+@media only screen and (max-width: 768px) {
+    .row {
+        grid-template-columns: 1fr !important; /* Mobile par ek ke neeche ek */
+    }
+}
+
+/* Logo Styling */
+.logo-img {
+    height: 80px;          /* Logo ki height fix ki */
+    width: auto;           /* Width apne aap adjust hogi */
+    border-radius: 50%;    /* Isse logo gol (round) dikhega */
+    border: 2px solid #D4AF37; /* Royal Gold border */
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.logo-img:hover {
+    transform: scale(1.1); /* Mouse le jane par thoda bada hoga */
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.5); /* Gold Glow effect */
+}
+
+/* Container ka size badhao taaki wo left gap bhare */
+.container {
+    width: 98% !important;      /* Pehle ye 70% tha, ab full screen hoga */
+    max-width: 100% !important; /* Koi rok-tok nahi */
+    padding: 0 10px !important; /* Thodi si breathing space */
+    margin: 0 auto !important;
+}
+
+/* =========================================
+   ROYAL DASHBOARD TABLE STYLE (Final)
+   ========================================= */
+
+/* 1. Main Box Styling */
+.dashboard-container {
+    max-width: 1100px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    border-top: 5px solid #D4AF37; /* Gold Top Border */
+}
+
+.dashboard-header h1 {
+    font-family: 'Sacramento', cursive;
+    color: #2C2C2C;
+    font-size: 3rem;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.dashboard-header p {
+    text-align: center;
+    color: #777;
+    margin-bottom: 30px;
+    font-family: 'Avenir', sans-serif;
+}
+
+/* 2. Table Design */
+.royal-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background-color: white;
+}
+
+.royal-table thead {
+    background-color: #2C2C2C;
+    color: #D4AF37;
+}
+
+.royal-table th {
+    padding: 18px 15px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    border-bottom: 3px solid #D4AF37;
+}
+
+.royal-table td {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    color: #333;
+    font-size: 15px;
+    vertical-align: middle;
+}
+
+/* 3. Row Hover Effect */
+.royal-table tbody tr {
+    transition: all 0.2s ease;
+}
+
+.royal-table tbody tr:hover {
+    background-color: #FFF8E7; /* Light Cream Background */
+    transform: scale(1.01);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    z-index: 2;
+    position: relative;
+}
+
+/* 4. Content Styling */
+.user-name {
+    font-weight: bold;
+    font-size: 17px;
+    color: #2C2C2C;
+}
+
+.order-id {
+    font-size: 12px;
+    color: #999;
+    background: #f1f1f1;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.item-name {
+    font-weight: 500;
+    color: #555;
+}
+
+.contact-row {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 4px;
+}
+
+.contact-row i {
+    color: #D4AF37; /* Gold Icons */
+    width: 20px;
+    text-align: center;
+}
+
+/* 5. Action Button */
+.btn-table-action {
+    background-color: white;
+    border: 1px solid #2C2C2C;
+    color: #2C2C2C;
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.btn-table-action:hover {
+    background-color: #2C2C2C;
+    color: #D4AF37;
+    border-color: #2C2C2C;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+/* Completed/Picked Up Status ke liye Green Color */
+.status-success {
+    background-color: #d4edda !important;
+    color: #155724 !important;
+    border: 1px solid #c3e6cb !important;
+}
+
+/* =========================================
+   ROYAL ORDER FORM STYLING
+   ========================================= */
+
+/* 1. Background & Centering */
+.form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    min-height: 80vh; /* Screen ke beech mein rakhega */
+}
+
+/* 2. The Form Box (Card) */
+.royal-form-card {
+    background: #ffffff;
+    padding: 40px;
+    width: 100%;
+    max-width: 500px; /* Zyada chouda nahi hone denge */
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    border-top: 5px solid #D4AF37; /* Gold Header */
+}
+
+.form-header h1 {
+    font-family: 'Sacramento', cursive;
+    color: #2C2C2C;
+    font-size: 3rem;
+    text-align: center;
+    margin: 0;
+}
+
+.form-header p {
+    text-align: center;
+    color: #888;
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+/* 3. Styling Django's Auto-Generated Inputs */
+.form-fields-container p {
+    margin-bottom: 20px;
+}
+
+.form-fields-container label {
+    display: block;
+    font-family: 'Avenir', sans-serif;
+    font-weight: bold;
+    color: #2C2C2C;
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+
+/* Input Fields Design */
+.form-fields-container input[type="text"],
+.form-fields-container input[type="email"],
+.form-fields-container input[type="number"],
+.form-fields-container input[type="tel"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-sizing: border-box; /* Padding se size nahi badhega */
+    background-color: #fcfcfc;
+}
+
+/* Jab user type karega to Gold Border aayegi */
+.form-fields-container input:focus {
+    border-color: #D4AF37;
+    outline: none;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
+}
+
+/* 4. Help Text (Agar form mein koi help text hai) */
+.helptext {
+    font-size: 12px;
+    color: #999;
+    display: block;
+    margin-top: 5px;
+}
+
+/* 5. Submit Button */
+.btn-royal-submit {
+    width: 100%;
+    background-color: #2C2C2C;
+    color: #D4AF37;
+    padding: 15px;
+    border: none;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 10px;
+}
+
+.btn-royal-submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    background-color: #000;
+}
+
+/* 6. Cancel Link */
+.cancel-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.cancel-link a {
+    color: #888;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.cancel-link a:hover {
+    color: #d32f2f; /* Hover karne par Red */
+}
+
+/* Login/Signup Specific Fixes */
+.custom-field {
+    margin-bottom: 15px;
+}
+
+.custom-field input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #f9f9f9;
+}
+
+.custom-field input:focus {
+    border-color: #D4AF37;
+    background: #fff;
+    outline: none;
+}
+
+/* Background image ko control karne ke liye wrapper fix */
+.form-wrapper {
+    position: relative; /* Overlay ke liye zaroori hai */
+}
+
+/* =========================================
+   ROYAL HOME PAGE (Shop Image Special)
+   ========================================= */
+
+/* 1. Hero Section (Shop Image Background) */
+.hero-section {
+    position: relative;
+    height: 85vh; /* Screen ka 85% hissa lega */
+    /* Teri Shop ki Image yahan hai: */
+    background-image: url('https://hisurat.com/_next/image?url=https%3A%2F%2Fcdn.hisurat.com%2Fbusiness%2Fa-one-cake-shop%2FAF1QipMvBJNROCY1sbCF6ZBv4XEanc5CWKH88ytY9Zyr.jpeg.webp&w=1920&q=75');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Parallax Effect (Scroll karne par photo wahi rahegi) */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    /* Black shade taaki text padha jaye */
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)); 
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    max-width: 800px;
+}
+
+/* Logo Styling */
+.hero-logo-box img {
+    width: 120px;
+    height: auto;
+    border-radius: 50%;
+    border: 3px solid #D4AF37;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+    margin-bottom: 20px;
+    background: rgba(0,0,0,0.5); /* Logo ke peeche halka kala circle */
+    padding: 5px;
+}
+
+.hero-title {
+    font-family: 'Sacramento', cursive;
+    font-size: 5rem;
+    color: #D4AF37; /* Gold */
+    margin: 0;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+}
+
+.hero-quote {
+    font-family: 'Avenir', sans-serif;
+    color: #fff;
+    font-size: 1.8rem;
+    font-style: italic;
+    margin-top: 5px;
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.8);
+}
+
+/* Buttons */
+.btn-hero-primary {
+    background-color: #D4AF37;
+    color: #2C2C2C;
+    padding: 15px 40px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: 0.3s;
+    margin: 10px;
+    display: inline-block;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.btn-hero-primary:hover {
+    background-color: #fff;
+    color: #D4AF37;
+    transform: translateY(-3px);
+}
+
+.btn-hero-secondary {
+    border: 2px solid #fff;
+    color: #fff;
+    padding: 13px 35px;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: 0.3s;
+    margin: 10px;
+    display: inline-block;
+}
+
+.btn-hero-secondary:hover {
+    background-color: #fff;
+    color: #2C2C2C;
+}
+
+/* 2. Features Strip (Beech ki patti) */
+.features-strip {
+    background-color: #2C2C2C;
+    display: flex;
+    justify-content: space-around;
+    padding: 30px 10px;
+    color: #D4AF37;
+    flex-wrap: wrap;
+    border-bottom: 3px solid #D4AF37;
+}
+
+.feature-item {
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px;
+}
+
+.feature-item i {
+    font-size: 24px;
+}
+
+/* 3. Location Box Styling */
+.location-box-royal {
+    border: 2px dashed #D4AF37;
+    padding: 20px;
+    display: inline-block;
+    margin-top: 30px;
+    border-radius: 10px;
+    background: rgba(255, 248, 231, 0.05); /* Very light background */
+}
+
+.map-icon {
+    font-size: 30px;
+    color: #D4AF37;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .hero-title { font-size: 3.5rem; }
+    .hero-quote { font-size: 1.2rem; }
+    .hero-section { height: 70vh; }
+    .features-strip { flex-direction: column; text-align: center; gap: 20px;}
+}
+
+/* =========================================
+   PROFESSIONAL ABOUT PAGE STYLES
+   ========================================= */
+
+.about-container-pro {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 0 20px;
+    font-family: 'Avenir', sans-serif;
+}
+
+/* Header Styling */
+.about-header-center {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.royal-title {
+    font-family: 'Sacramento', cursive;
+    font-size: 3.5rem;
+    color: #2C2C2C;
+    margin-bottom: 10px;
+}
+
+.gold-divider {
+    height: 3px;
+    width: 100px;
+    background-color: #D4AF37;
+    margin: 0 auto 20px;
+    border-radius: 2px;
+}
+
+.fade-text {
+    color: #777;
+    font-style: italic;
+    font-size: 1.1rem;
+}
+
+/* Card Styling */
+.royal-card {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    border-top: 4px solid #D4AF37;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-heading {
+    color: #2C2C2C;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.sub-heading {
+    color: #D4AF37;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.address-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* Map Wrapper */
+.map-wrapper {
+    border: 2px solid #eee;
+    padding: 5px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+/* Contact Info */
+.contact-row h6 {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.gold-text {
+    color: #D4AF37;
+    font-weight: bold;
+}
+
+/* Hours List Styling (Table Look) */
+.hours-list {
+    text-align: left;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.hour-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px dashed #ddd;
+    font-size: 1rem;
+}
+
+.hour-row:last-child {
+    border-bottom: none;
+}
+
+.hour-row .day {
+    font-weight: bold;
+    color: #2C2C2C;
+}
+
+.hour-row .time {
+    color: #666;
+    font-weight: 500;
+}
+
+/* =========================================
+   SHOP CARD HOVER EFFECTS 
+   ========================================= */
+
+/* 1. Card  Smooth  */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+    border: 1px solid transparent; /* Pehle se border invisible rakho */
+}
+
+/* 2. Mouse(Hover) */
+.card:hover {
+    transform: translateY(-10px); /* Card 10px upar uthega */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2); /* Gahri parchaai */
+    border: 1px solid #D4AF37; /* Royal Gold Border */
+}
+
+.card .card-image img {
+    transition: transform 0.5s ease;
+}
+
+.card:hover .card-image img {
+    transform: scale(2); /* Image thodi badi hogi */
+}
+
+.card .card-image {
+    overflow: hidden; /* Taaki image card ke bahar na nikle */
+}
+
+/* =========================================
+   PROFESSIONAL UI UPGRADE 
+   ========================================= */
+
+body {
+    background-color: #FFF8E7; /* Royal Cream background */
+    font-family: 'Avenir', sans-serif;
+    color: #2C2C2C;
+}
+
+/* 1. CLEANER ROW GRID */
+.row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 40px !important; 
+    margin: 50px auto !important;
+    max-width: 1400px !important;
+}
+
+/* 2. MINIMALIST CARD DESIGN */
+.card {
+    flex: 0 0 30% !important; /* 3 cards per row for a clean look */
+    min-width: 400px !important;
+    background: #ffffff !important;
+    border-radius: 20px !important; /* Soft rounded corners */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05) !important; /* Soft professional shadow */
+    border: 1px solid rgba(183, 174, 174, 0.03) !important;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+    overflow: visible !important; /* Keeps the '+' button visible */
+    height: auto !important;
+}
+
+.card:hover {
+    transform: translateY(-10px) !important;
+    box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15) !important; /* Gold tinted shadow on hover */
+}
+
+/* 3. IMAGE SECTION UPGRADE */
+.card-image {
+    height: 250px !important;
+    border-radius: 20px 20px 0 0 !important;
+    overflow: visible !important;
+}
+
+.card-image img {
+    height: 100% !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    transition: transform 0.6s ease !important;
+}
+
+.card:hover .card-image img {
+    transform: scale(1.1) !important; /* Subtle zoom like professional food sites */
+}
+
+/* 4. CONTENT & TYPOGRAPHY */
+.card-content {
+    padding: 25px !important;
+    text-align: left !important;
+}
+
+.card-title {
+    font-family: 'Avenir', sans-serif !important;
+    font-weight: 800 !important;
+    font-size: 22px !important;
+    color: #2C2C2C !important;
+    margin-bottom: 10px !important;
+}
+
+.product-price {
+    color: #D4AF37 !important;
+    font-weight: 900 !important;
+    font-size: 20px !important;
+    display: block;
+    margin-bottom: 15px;
+}
+
+/* 5. FLOATING BUTTON FIX */
+.btn-floating.halfway-fab {
+    bottom: -25px !important;
+    right: 20px !important;
+    background-color: #2C2C2C !important; /* Dark contrast button */
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2) !important;
+}
+
+.btn-floating.halfway-fab:hover {
+    background-color: #D4AF37 !important; /* Turns Gold on hover */
+    transform: scale(1.1) rotate(90deg) !important;
+}
+
+/* 6. NAVBAR GLASS EFFECT */
+nav {
+    background: rgba(44, 44, 44, 0.95) !important;
+    backdrop-filter: blur(8px);
+    border-bottom: 2px solid #D4AF37;
+    height: 75px !important;
+    line-height: 75px !important;
+}
+
+/* Responsive fix for Mobile */
+@media (max-width: 768px) {
+    .card {
+        flex: 0 0 90% !important;
+    }
+}
+/* =========================================
+   FIXED PROFESSIONAL HEADER (Perfect Fit)
+   ========================================= */
+
+/* 1. Navbar Container Layout */
+.nav-wrapper {
+    display: flex !important;
+    justify-content: space-between !important; /* Pushes Logo to Left, Links to Right */
+    align-items: center !important;
+    height: 100% !important;
+    width: 95% !important; /* Keeps some side padding */
+    margin: 0 auto !important;
+}
+
+/* 2. Logo & Text Container */
+.brand-logo {
+    position: relative !important; /* Reset absolute positioning */
+    display: flex !important;
+    align-items: center !important; /* Vertically center items */
+    height: 100% !important;
+    transform: none !important; /* Remove any centering transforms */
+    left: auto !important;
+}
+
+/* 3. The Logo Image (Perfect Small Circle) */
+.nav-header-logo {
+    height: 55px !important;    /* Fits inside 70-80px navbar */
+    width: 55px !important;     /* SAME as height = Perfect Circle */
+    border-radius: 50% !important; /* Makes it circular */
+    object-fit: cover !important;  /* Prevents stretching/distortion */
+    margin-right: 12px !important; /* Space between logo and text */
+    border: 2px solid #D4AF37;     /* Gold Border */
+    background-color: white;       /* Clean background if logo is transparent */
+    padding: 1px;                  /* Gap between border and logo */
+}
+
+/* 4. "A1 Bakery" Text Styling */
+.modern-logo {
+    font-family: 'Sacramento', cursive !important;
+    font-size: 32px !important; /* Adjusted size to fit navbar */
+    color: #D4AF37 !important;
+    white-space: nowrap; /* Prevents text from breaking lines */
+}
+
+/* 5. Navigation Links (Keep them on Right) */
+.nav-links {
+    display: flex !important;
+    align-items: center !important;
+    height: 100% !important;
+}
+
+/* Mobile Adjustment */
+@media (max-width: 600px) {
+    .nav-header-logo {
+        height: 45px !important;
+        width: 45px !important;
+    }
+    .modern-logo {
+        font-size: 24px !important;
+    }
+}
+/* =========================================
+   REAL BRAND COLORS FOR SOCIAL ICONS
+   ========================================= */
+
+/* 1. Facebook Original Blue */
+.social-link.facebook {
+    background-color: #1877F2 !important; /* Official FB Blue */
+    color: white !important; /* Icon White */
+    border: none !important; /* Border hata di */
+    box-shadow: 0 4px 10px rgba(24, 119, 242, 0.3); /* Blue Glow */
+}
+
+.social-link.facebook:hover {
+    background-color: #145dbf !important; /* Darker Blue on Hover */
+    transform: translateY(-3px);
+}
+
+/* 2. Instagram Original Gradient */
+.social-link.instagram {
+    /* Official Insta Gradient */
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%) !important;
+    color: white !important;
+    border: none !important;
+    box-shadow: 0 4px 10px rgba(214, 36, 159, 0.3); /* Pink/Purple Glow */
+}
+
+.social-link.instagram:hover {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 60%, #d6249f 90%) !important; /* Thoda Bright Hover */
+    transform: translateY(-3px);
+}
+
+/* Icons ko thoda bada aur clear dikhane ke liye */
+.social-link i {
+    font-size: 24px !important;
+    vertical-align: middle;
+}/* =========================================
+   FIXED PROFESSIONAL FOOTER STYLES
+   ========================================= */
+
+.royal-footer {
+    background-color: #1a1a1a; /* Thoda aur dark black premium look ke liye */
+    color: #e0e0e0;
+    margin-top: 60px;
+    padding-bottom: 20px;
+    position: relative;
+    border-top: 4px solid #D4AF37;
+}
+
+/* 1. The Ribbon (Capsule Style) */
+.connect-ribbon {
+    background-color: #D4AF37;
+    width: 280px;
+    margin: -25px auto 40px auto; /* Negative margin pulls it up */
+    text-align: center;
+    padding: 12px 0;
+    border-radius: 50px;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.5);
+    position: relative;
+    z-index: 10;
+}
+
+.ribbon-text {
+    font-family: 'Sacramento', cursive;
+    font-size: 28px;
+    color: #1a1a1a;
+    font-weight: bold;
+}
+
+/* 2. Column Layout Fixes */
+.footer-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer-col {
+    padding: 0 20px;
+    margin-bottom: 30px;
+}
+
+/* 3. Brand Column (Left) */
+.brand-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.footer-logo-sm {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 2px solid #D4AF37;
+    margin-right: 12px;
+}
+
+.footer-brand-name {
+    font-family: 'Sacramento', cursive;
+    font-size: 32px;
+    color: #D4AF37;
+}
+
+.brand-bio {
+    font-size: 14px;
+    color: #aaa;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 14px;
+    color: #ccc;
+}
+
+.contact-item i {
+    color: #D4AF37;
+    width: 25px; /* Fixed width for alignment */
+    font-size: 16px;
+}
+
+/* 4. Quick Links (Center) */
+.center-col-fix {
+    /* Alignment fix for middle column */
+    padding-left: 40px !important; 
+}
+
+.footer-title {
+    color: #D4AF37;
+    font-family: 'Avenir', sans-serif;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.footer-links-list {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links-list li {
+    margin-bottom: 12px;
+}
+
+.footer-links-list a {
+    color: #ccc;
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 15px;
+    display: block; /* Makes full width clickable */
+}
+
+.footer-links-list a:hover {
+    color: #D4AF37;
+    transform: translateX(5px); /* Slide effect on hover */
+}
+
+/* 5. Socials (Right) */
+.social-text {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 15px;
+}
+
+.social-group {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.social-bubble {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.social-bubble:hover {
+    transform: translateY(-5px) scale(1.1);
+}
+
+/* Real Colors */
+.facebook { background-color: #1877F2; }
+.instagram { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+.whatsapp { background-color: #25D366; }
+
+/* Copyright */
+.copyright-box {
+    border-top: 1px solid #333;
+    padding-top: 15px;
+}
+
+.copyright-box p {
+    font-size: 12px;
+    color: #666;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .center-col-fix { padding-left: 20px !important; }
+    .footer-row { flex-direction: column; text-align: center; }
+    .brand-wrapper, .contact-item, .social-group { justify-content: center; }
+    .footer-links-list a:hover { transform: none; }
+    .connect-ribbon { width: 80%; }
+}
+/* =========================================
+   FINAL PREMIUM FOOTER STYLES (NO-FAIL)
+   ========================================= */
+
+.final-royal-footer {
+    background-color: #121212; /* Deepest Black */
+    color: #e0e0e0;
+    margin-top: 80px;
+    padding-bottom: 30px;
+    position: relative;
+    border-top: 6px solid #D4AF37; /* Thick Gold Line */
+    font-family: 'Avenir', sans-serif;
+}
+
+/* 1. Ribbon Styling */
+.ribbon-wrapper {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: -28px; /* Pulls it up over the border */
+}
+
+.gold-ribbon {
+    background: linear-gradient(45deg, #c5a028, #e6c85e, #c5a028); /* Shiny Gold Gradient */
+    color: #121212;
+    padding: 12px 40px;
+    border-radius: 30px;
+    font-family: 'Sacramento', cursive;
+    font-size: 30px;
+    font-weight: bold;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    border: 2px solid #fff; /* White border for pop */
+}
+
+/* 2. Main Flex Container (The Grid Fix) */
+.footer-inner-container {
+    display: flex;
+    justify-content: space-between; /* Spreads columns evenly */
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 30px auto 0;
+    padding: 0 20px;
+    flex-wrap: wrap; /* Mobile friendly */
+}
+
+/* 3. Columns Base Style */
+.footer-column {
+    flex: 1; /* Equal width */
+    min-width: 250px;
+    padding: 0 20px;
+    margin-bottom: 30px;
+}
+
+/* --- COLUMN 1: BRAND --- */
+.logo-lockup {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.footer-logo-final {
+    height: 55px;
+    width: 55px;
+    border-radius: 50%;
+    border: 2px solid #D4AF37;
+    margin-right: 15px;
+}
+
+.brand-text-final {
+    font-family: 'Sacramento', cursive;
+    font-size: 38px;
+    color: #D4AF37;
+    line-height: 1;
+}
+
+.brand-tagline {
+    font-style: italic;
+    color: #888;
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+.info-block p {
+    margin: 10px 0;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    color: #ccc;
+}
+
+.gold-icon {
+    color: #D4AF37;
+    width: 25px;
+    font-size: 18px;
+}
+
+/* --- COLUMN 2: LINKS (Centered) --- */
+.links-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center everything in this column */
+}
+
+.column-title {
+    color: #fff;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.title-underline {
+    width: 50px;
+    height: 3px;
+    background-color: #D4AF37;
+    margin-bottom: 25px;
+}
+
+.final-links {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+.final-links li {
+    margin-bottom: 15px;
+}
+
+.final-links a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.final-links a:hover {
+    color: #D4AF37;
+    letter-spacing: 1px;
+}
+
+/* --- COLUMN 3: SOCIALS (Right Aligned or Centered) --- */
+.social-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center for balance */
+}
+
+.social-desc {
+    color: #888;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.final-social-icons {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.icon-box {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    color: #fff;
+    transition: 0.4s;
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.icon-box:hover {
+    transform: translateY(-5px) rotate(360deg);
+}
+
+/* Real Colors */
+.fb { background: #1877F2; }
+.insta { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+.wa { background: #25D366; }
+
+.footer-bottom-text {
+    text-align: center;
+    font-size: 12px;
+    color: #555;
+    border-top: 1px solid #333;
+    padding-top: 15px;
+    width: 100%;
+}
+
+/* Mobile Fix */
+@media (max-width: 768px) {
+    .footer-inner-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .logo-lockup, .info-block p {
+        justify-content: center;
+    }
+}
+/* =========================================
+   ABOUT PAGE STYLES
+   ========================================= */
+
+/* 1. Hero Adjustments */
+.about-hero {
+    position: relative;
+    height: 60vh;
+    background-image: url('https://hisurat.com/_next/image?url=https%3A%2F%2Fcdn.hisurat.com%2Fbusiness%2Fa-one-cake-shop%2FAF1QipMvBJNROCY1sbCF6ZBv4XEanc5CWKH88ytY9Zyr.jpeg.webp&w=1920&q=75');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-subtitle {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-top: 10px;
+    letter-spacing: 2px;
+}
+
+.badge-coming-soon {
+    background: #D4AF37;
+    color: #000;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-top: 15px;
+    display: inline-block;
+}
+
+/* 2. Story Section */
+.story-card {
+    padding: 0 !important; /* Reset padding for grid */
+    overflow: hidden;
+}
+
+.story-image-box {
+    height: 100%;
+    min-height: 400px;
+}
+
+.story-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.padding-fix {
+    padding: 40px !important;
+}
+
+.story-text {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.signature-logo {
+    width: 100px;
+    margin-top: 20px;
+    opacity: 0.8;
+}
+
+/* 3. Info Cards (Location & Hours) */
+.info-card {
+    height: 100%;
+    padding: 30px !important;
+    text-align: center;
+}
+
+.icon-header {
+    font-size: 40px;
+    color: #D4AF37;
+    margin-bottom: 20px;
+}
+
+.card-title-sm {
+    font-family: 'Avenir', sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #2C2C2C;
+    margin-bottom: 15px;
+}
+
+.map-frame {
+    border: 2px solid #D4AF37;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.btn-call {
+    background: #2C2C2C;
+    color: #D4AF37;
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    display: inline-block;
+    font-weight: bold;
+}
+
+/* Hours Table */
+.hours-table {
+    width: 100%;
+    text-align: left;
+    margin-top: 20px;
+}
+
+.hours-table td {
+    padding: 10px 0;
+    border-bottom: 1px dashed #ddd;
+    font-size: 0.95rem;
+}
+
+.hours-table .today {
+    color: #D4AF37;
+    font-weight: bold;
+}
+
+/* 4. Dark Review Section */
+.dark-review-section {
+    background: #1a1a1a !important;
+    color: white;
+    text-align: center;
+    border: 1px solid #D4AF37 !important;
+    padding: 50px !important;
+}
+
+.review-heading {
+    font-family: 'Sacramento', cursive;
+    color: #D4AF37;
+    font-size: 3.5rem;
+    margin-bottom: 5px;
+}
+
+.star-rating-wrapper {
+    margin: 20px 0;
+}
+
+.star-rating {
+    direction: rtl;
+    display: inline-flex;
+    font-size: 4rem;
+}
+
+.star-rating input { display: none; }
+.star-rating label {
+    color: #444;
+    cursor: pointer;
+    transition: 0.2s;
+    padding: 0 5px;
+}
+.star-rating input:checked ~ label,
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: #D4AF37;
+}
+
+/* Form Inputs */
+.royal-input {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid #444;
+    padding: 15px;
+    color: #fff;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+.royal-input:focus {
+    border-color: #D4AF37;
+    outline: none;
+}
+
+.btn-submit-review {
+    background: #D4AF37;
+    color: #000;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-submit-review:hover {
+    background: #fff;
+    transform: scale(1.05);
+}
+
+/* =========================================
+   HERO TEXT VISIBILITY FIX (About Page)
+   ========================================= */
+
+/* Jo black layer image ke upar hai, usse hum target kar rahe hain */
+.about-hero .hero-overlay-gradient {
+    /* 1. Background ko zyada kala (dark) banaya */
+    background: rgba(0, 0, 0, 0.75) !important; /* Pehle 0.5 tha, ab 0.75 kiya (75% opacity) */
+    
+    /* 2. Image ko dhundhla (blur) kiya taaki text sharp dikhe */
+    backdrop-filter: blur(5px) !important; /* Ye jadoo karega! Image blur ho jayegi */
+    
+    /* Ensure ye poore area ko cover kare */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* Text ko thoda aur ubhaarne ke liye shadow badha dete hain */
+.about-hero .hero-content h1,
+.about-hero .hero-content p {
+    text-shadow: 2px 2px 8px rgba(16, 13, 13, 0.9) !important;
+}
+/* style.css */
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.product-col {
+    flex: 0 1 calc(33.333% - 20px); /* Ek line me 3 items */
+    min-width: 250px;
+}
+
+.product-img-container img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+/* Shop Page Grid */
+.product-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px; /* Spacing control */
+}
+
+.product-card-container {
+    width: 33.33%; /* Ek line me 3 card */
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Image Size Control */
+.product-img {
+    width: 100%;
+    height: 250px; /* Fixed height for all images */
+    object-fit: cover; /* Image stretch nahi hogi */
+}
+
+/* Responsive: Mobile pe 1 aur Tablet pe 2 dikhega */
+@media (max-width: 992px) {
+    .product-card-container { width: 50%; }
+}
+@media (max-width: 600px) {
+    .product-card-container { width: 100%; }
+}
+/* =========================================
+   A1 BAKERY - MASTER PREMIUM THEME
+   (Add this to the bottom of style.css)
+   ========================================= */
+
+/* 1. IMPORT PREMIUM FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap');
+
+:root {
+    --gold: #D4AF37;
+    --dark: #1a1a1a;
+    --dark-glass: rgba(0, 0, 0, 0.7);
+    --gold-glow: rgba(212, 175, 55, 0.5);
+}
+
+/* 2. GLOBAL RESET & SMOOTH SCROLLING */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif !important; /* Clean text for paragraphs */
+    transition: background-color 0.5s ease;
+}
+
+/* Headings ko Royal Look do */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif !important;
+    letter-spacing: 1px;
+}
+
+/* 3. CUSTOM GOLD SCROLLBAR (Browser ko sunder banayega) */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #111;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--gold);
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #fff;
+}
+
+/* 4. MAGIC INPUTS & TEXTAREAS (Feedback Form & Login ke liye) */
+input[type="text"], 
+input[type="email"], 
+input[type="password"], 
+input[type="number"], 
+textarea, 
+select {
+    background: rgba(255, 255, 255, 0.05) !important; /* Glass effect */
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #fff !important;
+    border-radius: 8px !important;
+    padding: 12px 15px !important;
+    font-family: 'Poppins', sans-serif !important;
+    transition: all 0.3s ease-in-out !important;
+    backdrop-filter: blur(5px);
+}
+
+/* Jab user likhne ke liye click karega */
+input:focus, textarea:focus, select:focus {
+    outline: none !important;
+    border-color: var(--gold) !important;
+    box-shadow: 0 0 15px var(--gold-glow) !important; /* Gold Glow */
+    transform: scale(1.01);
+    background: rgba(0, 0, 0, 0.8) !important;
+}
+
+/* Placeholder text color */
+::placeholder {
+    color: #aaa !important;
+    font-weight: 300;
+}
+
+/* 5. UNIVERSAL BUTTON STYLING (Sab buttons ek jaise premium dikhenge) */
+button, .btn, input[type="submit"] {
+    background: linear-gradient(45deg, var(--gold), #b8860b) !important;
+    color: #000 !important;
+    border: none !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 12px 30px !important;
+    border-radius: 50px !important; /* Capsule shape */
+    cursor: pointer !important;
+    transition: all 0.4s ease !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Button Hover Effect */
+button:hover, .btn:hover, input[type="submit"]:hover {
+    transform: translateY(-3px) !important; /* Thoda upar uthega */
+    box-shadow: 0 10px 25px var(--gold-glow) !important;
+    background: linear-gradient(45deg, #fff, var(--gold)) !important;
+}
+
+button:active {
+    transform: scale(0.95) !important;
+}
+
+/* 6. PAGE ANIMATION (Fade In Effect - Page smooth khulega) */
+body {
+    animation: fadeInPage 0.8s ease-in-out;
+}
+
+@keyframes fadeInPage {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 7. TEXT SELECTION (Jab text select karoge to Gold dikhega) */
+::selection {
+    background: var(--gold);
+    color: #000;
+}
+
+/* 8. CARDS & BOXES HOVER (Agar koi card hai to wo float karega) */
+.card, .pro-card, .box {
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.card:hover, .pro-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4) !important;
+}
+
+/* =========================================
+   ENTRANCE ANIMATION (Float Up Effect)
+   (Isse sabse neeche paste karna style.css mein)
+   ========================================= */
+
+/* 1. Animation ka Logic (Niche se Upar aana) */
+@keyframes floatUpFadeIn {
+    0% {
+        opacity: 0; /* Dikhega nahi */
+        transform: translateY(80px); /* 80px Niche hoga */
+    }
+    100% {
+        opacity: 1; /* Poora dikhega */
+        transform: translateY(0); /* Apni jagah par aa jayega */
+    }
+}
+
+/* 2. Elements par Animation Lagana */
+
+/* Navbar (Menu) sabse pehle aayega */
+nav, .navbar {
+    animation: floatUpFadeIn 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+/* Header/Hero Section (Thoda ruk ke aayega) */
+.header-hero, .hero-section {
+    opacity: 0; /* Shuru mein gayab */
+    animation: floatUpFadeIn 1s cubic-bezier(0.25, 1, 0.5, 1) 0.2s forwards; /* 0.2s ka delay */
+}
+
+/* Cake Cards (Ye aur thoda ruk ke aayenge - Mast effect) */
+.shop-grid-container, .pro-card {
+    opacity: 0;
+    animation: floatUpFadeIn 1s cubic-bezier(0.25, 1, 0.5, 1) 0.4s forwards; /* 0.4s ka delay */
+}
+
+/* Feedback Form & Other Boxes */
+.feedback-container, .box, .container {
+    opacity: 0;
+    animation: floatUpFadeIn 1s cubic-bezier(0.25, 1, 0.5, 1) 0.3s forwards;
+}
+
+/* Buttons ko bhi smooth entry do */
+button, .btn {
+    opacity: 0;
+    animation: floatUpFadeIn 0.8s ease 0.6s forwards; /* Sabse last mein buttons aayenge */
+}
+
+/* Page load hone par scrollbar bhi smooth rahega */
+html {
+    scroll-behavior: smooth;
+}
+/* Custom Toast Message */
+.alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #D4AF37;
+    color: black;
+    padding: 15px 25px;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    z-index: 10000;
+    font-weight: bold;
+    animation: slideInRight 0.5s ease forwards;
+}
+
+@keyframes slideInRight {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* Input boxes ko stylish aur modern banane ke liye */
+input.form-control, 
+.royal-form-card input {
+    color: #000000 !important; /* Permanent Black Text */
+    background-color: #ffffff !important;
+    border: 2px solid #ddd !important;
+    border-radius: 12px !important; /* Rounded corners for modern look */
+    padding: 12px 15px !important;
+    transition: all 0.3s ease-in-out !important; /* Smooth effect ke liye */
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1) !important;
+}
+
+/* Jab user box par click kare (Hover/Focus Effect) */
+input.form-control:focus, 
+.royal-form-card input:focus {
+    border-color: #c59d1f !important; /* Gold border */
+    box-shadow: 0 0 10px rgba(197, 157, 31, 0.3) !important; /* Soft Gold Glow */
+    transform: translateY(-2px); /* Halkasa upar uthne wala effect */
+    outline: none !important;
+}
+
+/* Signup button par animation */
+.btn-royal-submit {
+    background: linear-gradient(135deg, #c59d1f 0%, #a37f16 100%) !important;
+    border: none !important;
+    transition: transform 0.2s, box-shadow 0.2s !important;
+}
+
+.btn-royal-submit:hover {
+    transform: scale(1.03) !important; /* Hover karne par button bada hoga */
+    box-shadow: 0 5px 15px rgba(163, 127, 22, 0.4) !important;
+}

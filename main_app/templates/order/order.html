@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="custom-page-header">
+        <h2 class="header-title">My Orders</h2>
+        <p class="header-subtitle">Manage your bakery orders efficiently.</p>
+        <div class="header-divider"></div>
+    </div>
+
+    <div class="table-responsive">
+       <div style="overflow-x: auto; width: 100%; -webkit-overflow-scrolling: touch;">
+    <table class="royal-table my-orders-table" style="width: 100%;">
+        <thead>
+            <tr>
+                <th>Customer Name</th>
+                <th>Item Ordered</th> 
+                <th>Status</th>       
+                <th>Price</th>        
+                <th>Contact Info</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %} 
+            <tr>
+                <td>
+                    <div class="user-name">{{ order.customer_name }}</div>
+                    <span class="order-id">ID: #{{ order.id }}</span>
+                </td>
+
+                <td>
+                    <div class="item-name">
+                        {% if order.product %}
+                            <span style="color: #D4AF37; font-weight: bold; font-size: 1.1rem;">
+                                {{ order.product.name }}
+                            </span>
+                            <br>
+                            <span style="color: #777; font-size: 0.85rem;">
+                                Qty: {{ order.quantity }}
+                            </span>
+                        {% else %}
+                            <span style="color: red;">Item Deleted</span>
+                        {% endif %}
+                    </div>
+                </td>
+
+                <td>
+                    <span style="padding: 6px 14px; border-radius: 20px; background: #222; color: #fff; border: 1px solid #D4AF37; font-size: 0.85rem; font-weight: bold; display: inline-block;">
+                        {% if order.status == 'Pending' %}
+                            <i class="fas fa-clock" style="color: #FFB300;"></i> Pending
+                        {% elif order.status == 'In Progress' %}
+                            <i class="fas fa-fire-alt" style="color: #FF7043;"></i> Cooking
+                        {% elif order.status == 'Shipped' %}
+                            <i class="fas fa-truck" style="color: #29B6F6;"></i> Shipped
+                        {% elif order.status == 'Ready For Pickup' %}
+                            <i class="fas fa-box-open" style="color: #66BB6A;"></i> Ready
+                        {% elif order.status == 'Delivered' %}
+                            <i class="fas fa-check-double" style="color: #43A047;"></i> Delivered
+                        {% else %}
+                            {{ order.status }}
+                        {% endif %}
+                    </span>
+                </td>
+
+                <td>
+                    {% if order.product %}
+                       <span style="font-weight: bold; color: #D4AF37;">
+                           ₹{% widthratio order.product.price 1 order.quantity %}
+                       </span>
+                    {% else %}
+                        -
+                    {% endif %}
+                </td>
+
+                <td>
+                    <div class="contact-row"><i class="fas fa-envelope"></i> {{ order.customer_email }}</div>
+                    <div class="contact-row"><i class="fas fa-phone"></i> {{ order.customer_phone }}</div>
+                </td>
+
+                <td>
+                    <a href="{% url 'detail' order.id %}" class="btn-table-action" style="display: block; margin-bottom: 5px; text-align: center;">
+                        View Details
+                    </a>
+
+                    {% if order.status == 'Pending' %}
+                        <a href="{% url 'delete_order' order.id %}" 
+                           class="btn-table-action" 
+                           style="background: #d32f2f; border: 1px solid #b71c1c; display: block; text-align: center;"
+                           onclick="return confirm('You want to cancel the order?')">
+                            <i class="fas fa-trash-alt"></i> Cancel Order
+                        </a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6" style="text-align: center; padding: 30px; color: #777;">
+                    No orders received yet.
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div> ```
+
+    </div>
+</div>
+
+{% endblock %}

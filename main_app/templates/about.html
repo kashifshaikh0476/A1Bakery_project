@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="about-hero">
+    <div class="hero-overlay-gradient"></div>
+    <div class="hero-content fade-in-up">
+        <h1 class="script-font gold-text" style="font-size: 5rem;">About A1 Bakery</h1>
+        <div class="gold-divider-center"></div>
+        <span class="badge-coming-soon">🚚 Delivery Coming Soon</span>
+    </div>
+</div>
+
+<div class="container section-padding" style="margin-top: -80px; position: relative; z-index: 2;">
+
+    
+            <div class="col m6 s12 padding-fix">
+                <h3 class="royal-heading">The Art of Baking</h3>
+                <p class="story-text">
+                    Welcome to <strong>A1 Bakery</strong>. Situated in the heart of Malegaon, near the historic Teen Kandil, we believe that baking is not just about flour and sugar—it's about <strong>love and patience</strong>.
+                </p>
+                <p class="story-text">
+                    Every morning, our ovens fire up to bring you the freshest puff pastries, softest breads, and the most decadent cakes. Whether you are celebrating a birthday or just craving a chai-time snack, we serve happiness in every bite.
+                </p>
+                <img src="{% static 'images/logo.png' %}" alt="Signature" class="signature-logo">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col m6 s12">
+            <div class="royal-card info-card">
+                <div class="icon-header"><i class="fas fa-map-marked-alt"></i></div>
+                <h3 class="card-title-sm">Visit Us</h3>
+                <p class="address-text">
+                    <strong>Misri Khan Ka Bada</strong>, Bhikku Chowk,<br> 
+                    Gulshanabad, Malegaon 423203
+                </p>
+                
+                <div class="map-frame">
+                    <iframe 
+                        src="https://maps.google.com/maps?q=GGWM%2BMV6%2C%20Bhikku%20Chowk%2C%20Gulshanabad%2C%20Malegaon%2C%20Maharashtra%20423203&t=&z=17&ie=UTF8&iwloc=&output=embed" 
+                        width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy">
+                    </iframe>
+                </div>
+                <a href="tel:+918421857457" class="btn-call"><i class="fas fa-phone"></i> +91 8421857457</a>
+            </div>
+        </div>
+
+        <div class="col m6 s12">
+            <div class="royal-card info-card">
+                <div class="icon-header"><i class="fas fa-clock"></i></div>
+                <h3 class="card-title-sm">Opening Hours</h3>
+                <p class="gold-highlight">WE ARE GLADLY OPEN</p>
+
+                <table class="hours-table">
+                    <tr><td>Monday</td> <td>10:00 AM - 10:00 PM</td></tr>
+                    <tr><td>Tuesday</td> <td>10:00 AM - 10:00 PM</td></tr>
+                    <tr><td>Wednesday</td> <td>10:00 AM - 10:00 PM</td></tr>
+                    <tr><td>Thursday</td> <td>10:00 AM - 10:00 PM</td></tr>
+                    <tr><td class="today">Friday</td> <td class="today">10:00 AM - 10:00 PM</td></tr>
+                    <tr><td>Saturday</td> <td>10:00 AM - 10:00 PM</td></tr>
+                    <tr><td>Sunday</td> <td>10:00 AM - 10:00 PM</td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="feedback-container" style="text-align: center; color: #D4AF37; background: #1a1a1a; padding: 40px;">
+    
+    <h2 style="font-family: 'Playfair Display', serif;">Rate Your Experience</h2>
+    <p>Tap the stars to tell us how we did!</p>
+
+    <form method="POST" action="{% url 'about' %}">
+        {% csrf_token %} <div class="star-rating" style="font-size: 30px; cursor: pointer; margin-bottom: 20px;">
+            <span onclick="setRating(1)">★</span>
+            <span onclick="setRating(2)">★</span>
+            <span onclick="setRating(3)">★</span>
+            <span onclick="setRating(4)">★</span>
+            <span onclick="setRating(5)">★</span>
+        </div>
+
+        <input type="hidden" name="rating" id="ratingValue" value="5">
+
+        <div style="margin-bottom: 15px;">
+            <input type="text" name="customer_name" placeholder="Your Name" required 
+                   style="width: 80%; padding: 10px; background: transparent; border: none; border-bottom: 1px solid #555; color: white;">
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <textarea name="message" placeholder="How was the taste? Write here..." required
+                      style="width: 80%; padding: 10px; background: transparent; border: none; border-bottom: 1px solid #555; color: white;"></textarea>
+        </div>
+
+        <button type="submit" style="background: #D4AF37; color: black; border: none; padding: 10px 30px; border-radius: 20px; font-weight: bold; cursor: pointer;">
+            Submit Review
+        </button>
+    </form>
+</div>
+
+<script>
+    function setRating(n) {
+        // Hidden input ki value set karo
+        document.getElementById('ratingValue').value = n;
+        
+        // Stars ko color karo (Visual Effect)
+        let stars = document.querySelectorAll('.star-rating span');
+        stars.forEach((star, index) => {
+            if (index < n) {
+                star.style.color = "#FFD700"; // Gold
+            } else {
+                star.style.color = "#555"; // Grey
+            }
+        });
+    }
+    
+    setRating(5); 
+</script>
+
+</div>
+
+{% endblock %}

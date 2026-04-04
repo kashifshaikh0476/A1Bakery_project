@@ -1,0 +1,355 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    /* Stats Cards Styling */
+    .stats-container {
+        display: flex; gap: 20px; margin-bottom: 30px; flex-wrap: wrap;
+    }
+    .stat-card {
+        flex: 1; min-width: 250px; background: #fff; padding: 20px;
+        border-radius: 15px; border-left: 5px solid #D4AF37;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        display: flex; align-items: center; justify-content: space-between;
+    }
+    .stat-number { font-size: 2.2rem; font-weight: bold; color: #2C2C2C; }
+    .stat-label { color: #777; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+
+    /* === MOBILE RESPONSIVE FIX FOR TABLE === */
+    .admin-table-container {
+        background: #fff;
+        border-radius: 15px;
+        border: 1px solid #eee;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+
+        /* Replaced 'overflow: hidden' to allow horizontal scrolling on small screens */
+        overflow-x: auto;
+        overflow-y: hidden;
+        width: 100%; /* Ensures the container fits the screen properly */
+        -webkit-overflow-scrolling: touch; /* Enables smooth scrolling on iOS/Mobile devices */
+    }
+
+    /* Force a minimum width so the table doesn't get squished, triggering the scrollbar instead */
+    .admin-table-container table {
+        min-width: 900px; /* Minimum width to keep columns readable on mobile */
+        width: 100%;
+    }
+
+    /* === Dropdown and Tick Centering Logic === */
+    .status-form-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+    }
+
+    /* === FIX: Dropdown Box Visibility === */
+    .admin-status-select {
+        display: block !important;
+        width: 150px !important;
+        height: 38px !important;
+        background-color: #2C2C2C !important;
+        color: #ffffff !important;
+        border: 2px solid #D4AF37 !important;
+        border-radius: 8px !important;
+        padding: 0 8px !important;
+        font-weight: bold !important;
+        cursor: pointer !important;
+    }
+
+    .admin-status-select option {
+        background-color: #2C2C2C !important;
+        color: #ffffff !important;
+        font-weight: bold !important;
+    }
+
+    .btn-update-tick {
+        background-color: #D4AF37 !important;
+        width: 38px !important;
+        height: 38px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        border-radius: 50% !important;
+        flex-shrink: 0;
+    }
+
+    /* === MOBILE RESPONSIVE OVERRIDE: VERTICAL CARD LAYOUT === */
+    @media screen and (max-width: 992px) {
+
+        /* Convert each table row into a floating card */
+        .admin-table-container table.responsive-table tbody tr {
+            display: block !important;
+            margin-bottom: 25px !important;
+            border: 2px solid #D4AF37 !important; /* Gold border for the card */
+            border-radius: 12px !important;
+            overflow: hidden !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1) !important;
+        }
+
+        /* Stack cell content vertically and remove the 50/50 split */
+        .admin-table-container table.responsive-table tbody td {
+            display: block !important;
+            width: 100% !important;
+            text-align: center !important; /* Center all information */
+
+            /* Add space at the top to accommodate the dark heading bar */
+            padding: 50px 15px 15px 15px !important;
+
+            position: relative !important;
+            background-color: #ffffff !important;
+            border-bottom: 1px dashed #ddd !important;
+        }
+
+        /* Move the dark heading bar to the very top of each cell */
+        .admin-table-container table.responsive-table tbody td::before {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important; /* Stretch across full width */
+            height: 35px !important;
+
+            /* Center the heading text */
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+
+            background-color: #2C2C2C !important;
+            color: #D4AF37 !important;
+            font-weight: bold !important;
+            font-size: 0.9rem !important;
+            padding: 0 !important;
+            text-align: center !important;
+        }
+
+        /* Ensure dropdown form stays centered in the card */
+        .status-form-wrapper {
+            justify-content: center !important;
+        }
+    }
+
+    /* === PRO TABLE UI ENHANCEMENTS === */
+
+    /* 1. Zebra Striping: Alternate row colors for better readability */
+    .admin-table-container table tbody tr:nth-child(even) {
+        background-color: #fafafa !important; /* Light grey/off-white */
+    }
+    .admin-table-container table tbody tr:nth-child(odd) {
+        background-color: #ffffff !important;
+    }
+
+    /* 2. Hover & Tap Effect: Highlights row when touched */
+    .admin-table-container table tbody tr:hover {
+        background-color: #f4edd9 !important; /* Very light gold tint */
+        transition: 0.3s ease;
+    }
+
+    /* 3. Sticky First Column: Freezes the ID column on the left */
+    .admin-table-container table th:first-child,
+    .admin-table-container table td:first-child {
+        position: sticky !important;
+        left: 0 !important;
+        z-index: 1 !important;
+        border-right: 2px solid #eee !important; /* Creates a visual separator */
+    }
+
+    /* Keep the dark background for the sticky Header ID */
+    .admin-table-container table th:first-child {
+        background-color: #2C2C2C !important;
+        z-index: 2 !important;
+    }
+
+    /* Match the sticky column background with the Zebra stripes */
+    .admin-table-container table tbody tr:nth-child(odd) td:first-child {
+        background-color: #ffffff !important;
+    }
+    .admin-table-container table tbody tr:nth-child(even) td:first-child {
+        background-color: #fafafa !important;
+    }
+
+    /* === PRO MOBILE LAYOUT OPTIMIZATIONS === */
+    @media screen and (max-width: 600px) {
+        
+        /* 1. Format Buttons into a 2x2 Grid to save vertical space */
+        .filter-btn-container {
+            display: grid !important;
+            grid-template-columns: 1fr 1fr !important; /* 2 columns */
+            gap: 10px !important;
+            margin-bottom: 20px !important;
+            padding: 0 10px !important;
+        }
+        
+        .filter-btn {
+            margin: 0 !important;
+            width: 100% !important;
+            font-size: 0.8rem !important; /* Slightly smaller text for fit */
+            padding: 0 !important;
+        }
+
+        /* 2. Shrink Stats Cards and place Top 2 side-by-side */
+        .stats-container {
+            gap: 10px !important;
+            padding: 0 10px !important;
+        }
+        
+        .stat-card {
+            min-width: 45% !important; /* Forces 2 cards in one row */
+            flex: 1 1 45% !important;
+            padding: 15px !important;
+        }
+        
+        /* Reduce text sizes inside the smaller cards */
+        .stat-number { font-size: 1.5rem !important; }
+        .stat-label { font-size: 0.75rem !important; }
+        .stat-card i { font-size: 1.8rem !important; }
+        
+        /* Make the Total Revenue card span the full width below the other two */
+        .stat-card:nth-child(3) {
+            min-width: 100% !important;
+            flex: 1 1 100% !important;
+        }
+    }
+</style>
+
+<div class="dashboard-container" style="padding: 40px 5%; max-width: 1400px; margin: 0 auto;">
+
+    <div class="dashboard-header" style="text-align: center; margin-bottom: 40px;">
+        <h1 style="font-family: 'Playfair Display', serif; color: #D4AF37; font-size: 3rem;">
+            Admin Dashboard <span style="font-size: 2rem;">👑</span>
+        </h1>
+        <p style="color: #777;">Monitor and manage all A1 Bakery orders</p>
+    </div>
+
+    <div class="filter-btn-container" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 20px; margin-bottom: 30px;">
+        <button type="button" class="btn-flat filter-btn" onclick="updateStats('today', this)" style="border: 2px solid #D4AF37; border-radius: 20px; padding: 0 15px; height: 35px; line-height: 33px; cursor: pointer; font-weight: bold; background-color: #D4AF37; color: white;">Today</button>
+
+        <button type="button" class="btn-flat filter-btn" onclick="updateStats('month', this)" style="border: 2px solid #D4AF37; border-radius: 20px; padding: 0 15px; height: 35px; line-height: 33px; cursor: pointer; font-weight: bold; background-color: transparent; color: #D4AF37;">This Month</button>
+
+        <button type="button" class="btn-flat filter-btn" onclick="updateStats('year', this)" style="border: 2px solid #D4AF37; border-radius: 20px; padding: 0 15px; height: 35px; line-height: 33px; cursor: pointer; font-weight: bold; background-color: transparent; color: #D4AF37;">This Year</button>
+
+        <button type="button" class="btn-flat filter-btn" onclick="updateStats('all', this)" style="border: 2px solid #D4AF37; border-radius: 20px; padding: 0 15px; height: 35px; line-height: 33px; cursor: pointer; font-weight: bold; background-color: transparent; color: #D4AF37;">All Time</button>
+    </div>
+    <div class="stats-container">
+        <div class="stat-card">
+            <div>
+                <div class="stat-number" id="total-orders">{{ total_orders }}</div>
+                <div class="stat-label">Total Orders</div>
+            </div>
+            <div style="font-size: 2.5rem;"><i class="fas fa-shopping-bag" style="color: #D4AF37;"></i></div>
+        </div>
+
+        <div class="stat-card" style="border-left-color: #ff9800;">
+            <div>
+                <div class="stat-number" id="pending-orders" style="color: #ff9800;">{{ pending_count }}</div>
+                <div class="stat-label">Pending</div>
+            </div>
+            <div style="font-size: 2.5rem;"><i class="fas fa-clock" style="color: #ffe0b2;"></i></div>
+        </div>
+
+        <div class="stat-card" style="border-left-color: #4CAF50;">
+            <div>
+                <div class="stat-number" id="total-revenue" style="color: #4CAF50;">₹ {{ revenue }}</div>
+                <div class="stat-label">Total Revenue</div>
+            </div>
+            <div style="font-size: 2.5rem;"><i class="fas fa-rupee-sign" style="color: #c8e6c9;"></i></div>
+        </div>
+    </div>
+
+    <div class="admin-table-container">
+        <table class="highlight" style="width: 100%;">
+            <thead style="background-color: #2C2C2C; color: #D4AF37;">
+                <tr>
+                    <th style="padding: 20px;">ID</th>
+                    <th>Customer Details</th>
+                    <th>Product & Qty</th>
+                    <th>Address</th>
+                    <th style="text-align: center;">Status Update</th>
+                    <th style="text-align: center;">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                <tr style="border-bottom: 1px solid #f1f1f1;">
+                    <td style="padding: 20px; font-weight: bold; color: #999;">#{{ order.id }}</td>
+                    <td>
+                        <div style="font-weight: bold; color: #2C2C2C;">{{ order.customer_name }}</div>
+                        <div style="font-size: 0.85rem; color: #777;">{{ order.customer_phone }}</div>
+                    </td>
+                    <td>
+                        {% if order.product %}
+                            <span style="color: #D4AF37; font-weight: 600;">{{ order.product.name }}</span>
+                            <br><span style="font-size: 0.8rem; color: #555;">Quantity: {{ order.quantity }}</span>
+                        {% else %}
+                            <span style="color: red;">No Product</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <span style="font-size: 0.85rem; color: #666;">{{ order.address|truncatechars:35 }}</span>
+                    </td>
+
+                    <td style="text-align: center;">
+                        <form action="{% url 'status' order.id %}" method="POST" style="margin: 0;">
+                            {% csrf_token %}
+                            <div class="status-form-wrapper">
+                                <select name="status" class="browser-default admin-status-select">
+                                    <option value="Pending" {% if order.status == 'Pending' %}selected{% endif %}>Pending</option>
+                                    <option value="In Progress" {% if order.status == 'In Progress' %}selected{% endif %}>Cooking</option>
+                                    <option value="Shipped" {% if order.status == 'Shipped' %}selected{% endif %}>Shipped</option>
+                                    <option value="Ready For Pickup" {% if order.status == 'Ready For Pickup' %}selected{% endif %}>Ready</option>
+                                    <option value="Delivered" {% if order.status == 'Delivered' %}selected{% endif %}>Delivered</option>
+                                </select>
+
+                                <button type="submit" class="btn-floating btn-update-tick waves-effect waves-light">
+                                    <i class="fas fa-check"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </td>
+
+                    <td style="padding: 20px; text-align: center;">
+                        <a href="{% url 'detail' order.id %}" class="btn-small" style="background-color: #2C2C2C; border-radius: 20px; color: #D4AF37;">VIEW</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr><td colspan="6" style="text-align: center; padding: 50px; color: #999;">No active orders found.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+function updateStats(timeFilter, clickedButton) {
+    // 1. Sab buttons ko transparent banao
+    let buttons = document.querySelectorAll('.filter-btn');
+    buttons.forEach(btn => {
+        btn.style.backgroundColor = 'transparent';
+        btn.style.color = '#D4AF37';
+    });
+
+    // 2. Clicked button ko highlight (Gold) banao
+    clickedButton.style.backgroundColor = '#D4AF37';
+    clickedButton.style.color = 'white';
+
+    // 3. Backend se API call karo
+    fetch(`/dashboard-stats/?filter=${timeFilter}`)
+    .then(response => {
+        if (!response.ok) throw new Error("API call fail ho gaya");
+        return response.json();
+    })
+    .then(data => {
+        // 4. HTML me IDs ko dhundh kar numbers change karo
+        document.getElementById('total-orders').innerText = data.total_orders;
+        document.getElementById('pending-orders').innerText = data.pending_orders;
+        document.getElementById('total-revenue').innerText = '₹ ' + data.total_revenue;
+    })
+    .catch(error => {
+        console.error("Error:", error);
+    });
+}
+</script>
+
+{% endblock %}

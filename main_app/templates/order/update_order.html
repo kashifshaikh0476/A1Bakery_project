@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="form-wrapper">
+    <div class="royal-form-card">
+        
+        <div class="form-header">
+            <h1>Update Order</h1>
+            <p>Need to make changes? Update your details below.</p>
+        </div>
+
+        <form method="POST">
+            {% csrf_token %}
+            
+            <div class="form-fields-container">
+                {{ form.as_p }}
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-royal-submit">
+                    Save Changes <i class="fas fa-save"></i>
+                </button>
+            </div>
+            
+            <div class="cancel-link">
+                <a href="{% url 'detail' form.instance.id %}">Cancel & Go Back</a>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

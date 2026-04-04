@@ -1,0 +1,10 @@
+Django==3.2.25
+django-jazzmin==2.6.0
+Pillow
+django-google-maps
+django-phone-field
+django-phonenumber-field
+phonenumberslite
+sqlparse
+pytz
+whitenoise==6.5.0

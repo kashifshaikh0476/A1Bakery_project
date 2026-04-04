@@ -1,0 +1,256 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<style>
+/* Invoice Design - Premium Golden Rectangle */
+.invoice-wrapper {
+    max-width: 850px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px; /* Thoda tight kiya taaki compact lage */
+    font-family: 'Poppins', Arial, sans-serif;
+    color: #333;
+    
+    /* === THE DARK GOLDEN BORDER === */
+    border: 4px solid #b8860b; 
+    border-radius: 10px; /* Halka sa gol corner premium look ke liye */
+    
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* === MOBILE FRIENDLY FIX === */
+@media (max-width: 600px) {
+    .invoice-wrapper { padding: 20px; margin: 15px; }
+    .company-name { font-size: 24px; }
+    .invoice-header { flex-direction: column; text-align: left; }
+    .invoice-header div:last-child { text-align: left !important; margin-top: 15px; }
+    .invoice-table th, .invoice-table td { font-size: 12px; padding: 8px 5px; }
+}
+
+.invoice-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid #b8860b; /* Header line bhi dark gold */
+    padding-bottom: 15px;
+}
+.company-name {
+    font-size: 32px;
+    font-weight: bold;
+    color: #b8860b;
+}
+.invoice-title {
+    font-size: 28px;
+    font-weight: bold;
+}
+.meta { margin-top: 10px; font-size: 14px; }
+.bill-to { margin-top: 25px; font-size: 14px; }
+.invoice-table {
+    width: 100%;
+    margin-top: 30px;
+    border-collapse: collapse;
+}
+.invoice-table th {
+    background: #fdfaf0; /* Halka sa golden tint background */
+    text-align: left;
+    padding: 10px;
+    border-bottom: 2px solid #ddd;
+}
+.invoice-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+.invoice-total {
+    text-align: right;
+    font-size: 18px;
+    font-weight: bold;
+    color: #b8860b;
+    padding-top: 15px;
+}
+
+/* Status Badge Styling */
+.status-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.status-paid { background: #e8f5e9; color: #2e7d32; }
+.status-pending { background: #fff3e0; color: #ef6c00; }
+
+.footer {
+    margin-top: 30px; /* Bottom ka extra space kam kiya */
+    text-align: center;
+    font-size: 13px;
+    color: #777;
+    padding-bottom: 10px;
+}
+.sign {
+    text-align: right;
+    margin-top: 20px;
+    font-weight: bold;
+    color: #000;
+}
+
+/* Action Buttons */
+.action-buttons {
+    text-align: center;
+    margin: 30px 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.btn {
+    padding: 12px 25px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.btn-print { background: #222; color: #fff; }
+.btn-pdf { background: #b8860b; color: #fff; }
+.btn-wa { background: #25D366; color: #fff; }
+
+/* ORDER AGAIN BUTTON STYLE */
+.btn-again { 
+    background: transparent; 
+    color: #b8860b; 
+    border: 2px solid #b8860b; 
+}
+.btn-again:hover { background: #b8860b; color: #fff; }
+
+/* === THE NEW PERFECT PRINT CSS (Compact Rectangle Fix) === */
+@media print {
+    /* Hide the entire body contents by default */
+    body * {
+        visibility: hidden;
+    }
+    
+    /* Make ONLY the invoice and its children visible */
+    #invoice, #invoice * {
+        visibility: visible;
+    }
+    
+    /* Reposition the invoice and force it to wrap tightly around content */
+    #invoice {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: auto !important; /* YAHI FIX HAI: Extra space ko rokne ke liye */
+        margin: 0 !important;
+        padding: 20px !important;
+        box-shadow: none !important; 
+        
+        /* Print mein bhi Golden Border maintain rakho */
+        border: 4px solid #b8860b !important; 
+        border-radius: 10px !important;
+        box-sizing: border-box;
+    }
+
+    /* Force the page background to white and let height be auto */
+    html, body {
+        background: #fff !important;
+        height: auto !important; /* Pehle ye 100% tha isliye poora page le raha tha */
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Hide the buttons explicitly */
+    .action-buttons, .navbar, footer { 
+        display: none !important; 
+    }
+}
+</style>
+
+<div id="invoice" class="invoice-wrapper">
+    <div class="invoice-header">
+        <div>
+            <div class="company-name">A1 Bakery</div>
+            Malegaon, Maharashtra<br>
+            Phone: +91 8421857457
+        </div>
+        <div style="text-align:right">
+            <div class="invoice-title">INVOICE</div>
+            <div class="meta">
+                Order #: <strong>{{ order.id }}</strong><br>
+                Date: <strong>{% now "jS F Y" %}</strong><br>
+                Payment: <strong>{{ order.payment_method|default:"Cash on Delivery" }}</strong>
+            </div>
+        </div>
+    </div>
+
+    <div class="bill-to">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+            <div>
+                <strong>Bill To:</strong><br>
+                {{ order.customer_name }}<br>
+                {{ order.customer_phone }}<br>
+                {{ order.address }}, {{ order.city }}
+            </div>
+            <div class="status-badge {% if order.is_paid %}status-paid{% else %}status-pending{% endif %}">
+                {% if order.is_paid %} Paid Online {% else %} Pending (COD) {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <table class="invoice-table">
+        <thead>
+            <tr>
+                <th>Item Description</th>
+                <th>Qty</th>
+                <th style="text-align:right">Price</th>
+                <th style="text-align:right">Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ order.product.name }}</td>
+                <td>{{ order.quantity }}</td>
+                <td style="text-align:right">₹{{ order.product.price }}</td>
+                <td style="text-align:right">
+                    ₹{% widthratio order.product.price 1 order.quantity %}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" class="invoice-total">Total Amount:</td>
+                <td class="invoice-total">
+                    ₹{% widthratio order.product.price 1 order.quantity %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="footer">
+        Thank you for choosing A1 Bakery!
+        <div class="sign">
+            Authorized Signatory<br>
+            <span style="color:#b8860b">A1 Bakery</span>
+        </div>
+    </div>
+</div>
+
+<div class="action-buttons">
+    <button onclick="window.print()" class="btn btn-print">Print</button>
+    
+    <a href="{% url 'shop' %}" class="btn btn-again">
+       <i class="fas fa-redo" style="margin-right:8px;"></i> Order Again
+    </a>
+    
+    <a class="btn btn-wa"
+       target="_blank"
+       href="https://wa.me/918421857457?text=🟢%20*NEW%20ORDER%20-%20A1%20BAKERY*%20🟢%0A%0A*Order%20ID:*%20%23{{ order.id }}%0A*Customer:*%20{{ order.customer_name }}%0A*Phone:*%20{{ order.customer_phone }}%0A%0A*Item:*%20{{ order.product.name }}%0A*Qty:*%20{{ order.quantity }}%0A*Total%20Amount:*%20₹{% widthratio order.product.price 1 order.quantity %}%0A%0A*Payment:*%20{{ order.payment_method }}%0A*Address:*%20{{ order.address }},%20{{ order.city }}%0A%0A--------------------------%0A*View%20Invoice:*%20{{ request.build_absolute_uri }}">
+        WhatsApp Admin
+    </a>
+</div>
+
+{% endblock %}
