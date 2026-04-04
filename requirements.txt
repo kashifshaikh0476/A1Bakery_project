@@ -7,3 +7,4 @@ django-phonenumber-field
 phonenumberslite
 whitenoise==6.5.0
 gunicorn
+qrcode[pil]
