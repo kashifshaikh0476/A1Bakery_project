@@ -8,3 +8,4 @@ phonenumberslite
 sqlparse
 pytz
 whitenoise==6.5.0
+gunicorn
