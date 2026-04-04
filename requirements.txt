@@ -1,4 +1,4 @@
-Django==3.2.25
+Django==4.2.16
 django-jazzmin==2.6.0
 Pillow
 django-google-maps
