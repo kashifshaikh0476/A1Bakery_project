@@ -1,11 +1,12 @@
 import os
 from pathlib import Path
+import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-e7y2svjrg+u-1s+$*@u_vkemd=j_%*uvk&+76)_9ii94xip#31'
 
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 APPEND_SLASH = True 
@@ -54,10 +55,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'A1.wsgi.application'
 
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -129,3 +132,6 @@ JAZZMIN_UI_TWEAKS = {
 LOGOUT_ON_GET = True
 LOGIN_REDIRECT_URL = '/order/'
 LOGOUT_REDIRECT_URL = '/'
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
