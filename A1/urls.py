@@ -7,7 +7,7 @@ from main_app import views as main_views # Ye line imports mein add karein
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # Purani logout line ko hata kar ye daalein
+     path('create-admin/', main_views.create_admin),
     path('accounts/logout/', main_views.custom_logout, name='logout'),
     path('', include('main_app.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
@@ -16,3 +16,9 @@ urlpatterns = [
 # Media settings for images
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+from main_app.views import create_admin
+
+urlpatterns += [
+    path('create-admin/', create_admin),
+]

@@ -9,7 +9,8 @@ from django.db.models import Sum, F
 from .models import Order, Map, Product, Feedback, UserProfile 
 from .forms import OrderForm, OrderTrackerForm, CustomUserCreationForm 
 from django.utils import timezone
-from django.http import JsonResponse # <--- Ye line add karo
+from django.http import JsonResponse 
+from django.http import HttpResponse
 
 def generate_upi_qr(amount, order_id):
     upi_id = "8421857457@ybl" 
@@ -229,3 +230,12 @@ def dashboard_stats_api(request):
         'total_revenue': revenue
     }
     return JsonResponse(data)
+
+
+from django.contrib.auth.models import User
+
+def create_admin(request):
+    if not User.objects.filter(username='admin').exists():
+        User.objects.create_superuser('admin', 'admin@gmail.com', 'admin123')
+        return HttpResponse("Admin created")
+    return HttpResponse("Admin already exists")
