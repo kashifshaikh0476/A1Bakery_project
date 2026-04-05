@@ -12,7 +12,7 @@ ALLOWED_HOSTS = ['*']
 APPEND_SLASH = True 
 
 INSTALLED_APPS = [
-    'jazzmin', 
+    #'jazzmin', 
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
