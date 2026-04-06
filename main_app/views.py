@@ -14,11 +14,15 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 
 def create_admin(request):
-    # Username 'admin2' kar dete hain safety ke liye
-    if not User.objects.filter(username='kashif').exists():
-        User.objects.create_superuser('kashif', 'kashif@gmail.com', 'kashif@047')
-        return HttpResponse("New Admin 'bakery_admin' created successfully ✅")
-    return HttpResponse("Admin already exists ⚠️")
+    user, created = User.objects.get_or_create(username='kashif')
+    user.set_password('kashif047') # Ekdum simple password rakha hai testing ke liye
+    user.is_superuser = True
+    user.is_staff = True
+    user.save()
+    if created:
+        return HttpResponse("New Admin 'kashif' created ✅")
+    else:
+        return HttpResponse("Admin 'kashif' password updated to 'kashif047' 🔄")
 
 
 def generate_upi_qr(amount, order_id):
