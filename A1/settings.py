@@ -24,6 +24,8 @@ INSTALLED_APPS = [
     'main_app',
     'phone_field',
     'django_google_maps',
+    'cloudinary_storage',
+    'cloudinary',
     'whitenoise.runserver_nostatic', # <--- Static files fix
 ]
 
@@ -135,3 +137,12 @@ JAZZMIN_UI_TWEAKS = {
 LOGOUT_ON_GET = True
 LOGIN_REDIRECT_URL = '/order/'
 LOGOUT_REDIRECT_URL = '/'
+
+# === CLOUDINARY SETTINGS FOR PERMANENT IMAGES ===
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dnnqucaq2',
+    'API_KEY': '836779289267775',
+    'API_SECRET': '7EEfnvr-w-ngWxbnMQ_wEw0uCOw'
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'

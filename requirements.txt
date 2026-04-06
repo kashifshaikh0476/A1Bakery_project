@@ -12,3 +12,5 @@ qrcode[pil]
 dj-database-url
 whitenoise
 psycopg2-binary
+django-cloudinary-storage
+cloudinary
