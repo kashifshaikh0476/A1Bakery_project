@@ -1,18 +1,20 @@
 import os
 from pathlib import Path
-import os
+import dj_database_url  # <--- Ye line add ki hai
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-e7y2svjrg+u-1s+$*@u_vkemd=j_%*uvk&+76)_9ii94xip#31'
 
-DEBUG = True
+DEBUG = True # Website ready hone ke baad ise False kar sakte hain
+
+# Render ke liye zaroori settings
 ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = ['https://*.onrender.com'] 
 
 APPEND_SLASH = True 
 
 INSTALLED_APPS = [
-    #'jazzmin', 
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -21,12 +23,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'main_app',
     'phone_field',
-    'django_google_maps'
+    'django_google_maps',
+    'whitenoise.runserver_nostatic', # <--- Static files fix
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', # <--- WhiteNoise priority
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -55,13 +58,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'A1.wsgi.application'
 
-
-
+# === DATABASE SETTINGS (PERMANENT POSTGRES FIX) ===
+# Agar Render par DATABASE_URL set hai toh wo use karega, warna local sqlite
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': dj_database_url.config(
+        default=f"sqlite:///{os.path.join(BASE_DIR, 'db.sqlite3')}",
+        conn_max_age=600
+    )
 }
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -77,17 +80,22 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
+# === STATIC & MEDIA SETTINGS ===
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
+# Static files compression ke liye
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# === JAZZMIN SETTINGS (UPDATED FOR EASY ADMIN CREATION) ===
+# Login Session Fix
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
+# === JAZZMIN SETTINGS (Tere original settings) ===
 JAZZMIN_SETTINGS = {
     "site_title": "A1 Bakery Admin",
     "site_header": "A1 Bakery",
@@ -96,13 +104,10 @@ JAZZMIN_SETTINGS = {
     "copyright": "A1 Bakery Ltd",
     "search_model": "main_app.Product",
     "logout_link": "logout", 
-    
     "hide_models": ["auth.group"], 
-
     "topmenu_links": [
         {"name": "Open Website", "url": "home", "permissions": ["auth.view_user"]},
     ],
-
     "icons": {
         "auth.user": "fas fa-user-shield",
         "main_app.Product": "fas fa-birthday-cake",
@@ -110,7 +115,6 @@ JAZZMIN_SETTINGS = {
         "main_app.Feedback": "fas fa-star",
     },
 }
-
 
 JAZZMIN_UI_TWEAKS = {
     "theme": "darkly", 
@@ -125,13 +129,9 @@ JAZZMIN_UI_TWEAKS = {
         "warning": "btn-warning",
         "danger": "btn-danger",
         "success": "btn-success"
-        
     }
 }
 
 LOGOUT_ON_GET = True
 LOGIN_REDIRECT_URL = '/order/'
 LOGOUT_REDIRECT_URL = '/'
-
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')

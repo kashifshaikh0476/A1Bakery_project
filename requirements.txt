@@ -8,3 +8,7 @@ phonenumberslite
 whitenoise==6.5.0
 gunicorn
 qrcode[pil]
+
+dj-database-url
+whitenoise
+psycopg2-binary
