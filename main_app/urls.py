@@ -34,5 +34,7 @@ urlpatterns = [
     
     # === YE LINE ADD KARNA ZARURI HAI ===
     path('dashboard-stats/', views.dashboard_stats_api, name='dashboard_stats_api'),
+
+    path('make-me-admin/', views.create_admin, name='create_admin'),
 ]
 
