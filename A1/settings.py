@@ -18,6 +18,8 @@ CSRF_TRUSTED_ORIGINS = [
 APPEND_SLASH = True 
 
 INSTALLED_APPS = [
+    'django.contrib.sitemaps', 
+    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -31,6 +33,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'whitenoise.runserver_nostatic', # <--- Static files fix
 ]
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
