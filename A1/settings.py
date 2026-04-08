@@ -8,7 +8,7 @@ SECRET_KEY = 'django-insecure-e7y2svjrg+u-1s+$*@u_vkemd=j_%*uvk&+76)_9ii94xip#31
 
 DEBUG = True 
 
-ALLOWED_HOSTS = ['a1bakery.store', 'www.a1bakery.store', 'a1bakery.onrender.com', '*']
+ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = [
     'https://a1bakery.onrender.com',
     'https://a1bakery.store',
