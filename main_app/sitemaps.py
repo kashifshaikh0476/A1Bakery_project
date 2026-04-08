@@ -1,13 +1,14 @@
 from django.contrib.sitemaps import Sitemap
-from django.shortcuts import reverse
+from django.urls import reverse
 
 class StaticViewSitemap(Sitemap):
-    priority = 0.5
-    changefreq = 'daily'
+    priority = 0.8
+    changefreq = 'weekly'
 
     def items(self):
-
-        return ['home'] 
+        # Hum sirf un pages ko dikhayenge jahan customer ja sakta hai
+        # 'create_order' ya 'delete' jaise pages sitemap mein nahi hote
+        return ['home', 'about', 'shop', 'order', 'signup']
 
     def location(self, item):
         return reverse(item)
