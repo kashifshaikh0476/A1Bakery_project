@@ -1,0 +1,36 @@
+<html>
+<head>
+    <style>
+        @page { size: a4; margin: 1cm; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #2C2C2C; color: #D4AF37; }
+        h1 { text-align: center; color: #D4AF37; }
+    </style>
+</head>
+<body>
+    <h1>A1 Bakery - Sales Report</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Customer</th>
+                <th>Product</th>
+                <th>Amount</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                <td>#{{ order.id }}</td>
+                <td>{{ order.customer_name }}</td>
+                <td>{{ order.product.name }}</td>
+                <td>₹ {{ order.total_price }}</td>
+                <td>{{ order.created_at|date:"d-m-Y" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

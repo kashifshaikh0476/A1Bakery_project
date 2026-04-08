@@ -1,5 +1,7 @@
 from django.urls import path
 from . import views
+from django.urls import path
+from . import views
 
 urlpatterns = [
     # 1. Home Page (Root URL)
@@ -32,9 +34,11 @@ urlpatterns = [
     
     path('home/', views.home, name='home'),
     
-    # === YE LINE ADD KARNA ZARURI HAI ===
     path('dashboard-stats/', views.dashboard_stats_api, name='dashboard_stats_api'),
 
     path('make-me-admin/', views.create_admin, name='create_admin'),
+
+    path('export-orders/', views.export_orders_csv, name='export_orders'),
+    path('export-pdf/', views.export_orders_pdf, name='export_pdf'),
 ]
 

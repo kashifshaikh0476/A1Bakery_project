@@ -9,9 +9,13 @@ from django.db.models import Sum, F
 from .models import Order, Map, Product, Feedback, UserProfile 
 from .forms import OrderForm, OrderTrackerForm, CustomUserCreationForm 
 from django.utils import timezone
-from django.http import JsonResponse # <--- Ye line add karo
+from django.http import JsonResponse 
 from django.contrib.auth.models import User
 from django.http import HttpResponse
+import csv
+from django.http import HttpResponse
+from .models import Order
+
 
 def create_admin(request):
     user, created = User.objects.get_or_create(username='kashif')
@@ -243,3 +247,51 @@ def dashboard_stats_api(request):
         'total_revenue': revenue
     }
     return JsonResponse(data)
+
+
+
+def export_orders_csv(request):
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename="A1_Bakery_Statement.csv"'
+
+    writer = csv.writer(response)
+    # Headings
+    writer.writerow(['Order ID', 'Customer Name', 'Product', 'Quantity', 'Status', 'Date'])
+
+    orders = Order.objects.all().order_by('-created_at')
+
+    for order in orders:
+        order_date = order.created_at.strftime('%d-%m-%Y %H:%M') if order.created_at else "N/A"
+        
+        writer.writerow([
+            order.id, 
+            order.customer_name, 
+            order.product.name if order.product else "No Product", 
+            order.quantity, 
+            order.status, 
+            order_date
+        ])
+
+    return response
+
+
+from django.template.loader import get_template
+from xhtml2pdf import pisa
+
+def export_orders_pdf(request):
+    orders = Order.objects.all().order_by('-created_at')
+    template_path = 'admin_orders_pdf.html' 
+    context = {'orders': orders}
+    
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="A1_Bakery_Report.pdf"'
+    
+    # HTML ko PDF convert
+    template = get_template(template_path)
+    html = template.render(context)
+    
+    pisa_status = pisa.CreatePDF(html, dest=response)
+    
+    if pisa_status.err:
+       return HttpResponse('We had some errors <pre>' + html + '</pre>')
+    return response
