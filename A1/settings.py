@@ -6,7 +6,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-e7y2svjrg+u-1s+$*@u_vkemd=j_%*uvk&+76)_9ii94xip#31'
 
-DEBUG = True # Website ready hone ke baad ise False kar sakte hain
+DEBUG = True 
 
 ALLOWED_HOSTS = ['a1bakery.store', 'www.a1bakery.store', 'a1bakery.onrender.com', '*']
 CSRF_TRUSTED_ORIGINS = [
