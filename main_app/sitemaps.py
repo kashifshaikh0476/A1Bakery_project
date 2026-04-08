@@ -2,12 +2,12 @@ from django.contrib.sitemaps import Sitemap
 from django.shortcuts import reverse
 
 class StaticViewSitemap(Sitemap):
-    priority = 0.8
-    changefreq = 'weekly'
+    priority = 0.5
+    changefreq = 'daily'
 
     def items(self):
-        # Yahan 'home' aur 'order' tere urls.py ke 'name' hone chahiye
-        return ['home', 'order', 'shop', 'about'] 
+
+        return ['home'] 
 
     def location(self, item):
         return reverse(item)
