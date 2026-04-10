@@ -18,6 +18,8 @@ CSRF_TRUSTED_ORIGINS = [
 APPEND_SLASH = True 
 
 INSTALLED_APPS = [
+    'cloudinary_storage',  
+    'cloudinary',
     'django.contrib.sitemaps', 
     'django.contrib.sites',
     'django.contrib.admin',
@@ -29,9 +31,7 @@ INSTALLED_APPS = [
     'main_app',
     'phone_field',
     'django_google_maps',
-    'cloudinary_storage',
-    'cloudinary',
-    'whitenoise.runserver_nostatic', # <--- Static files fix
+    'whitenoise.runserver_nostatic', 
 ]
 SITE_ID = 1
 

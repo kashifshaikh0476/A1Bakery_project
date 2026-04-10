@@ -2,6 +2,25 @@
 {% load static %}
 
 {% block content %}
+<div class="statement-btn-container" style="display: flex; justify-content: flex-end; margin-top: 20px; margin-bottom: 20px; padding-right: 20px;">
+    <div class="statement-dropdown">
+        <button class="statement-btn" style="background-color: white; border: 2px solid #D4AF37; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+            <i class="fas fa-file-download" style="color: #D4AF37;"></i>
+            <span style="color: #2C2C2C;">My Statements</span>
+            <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 5px; color: #777;"></i>
+        </button>
+        <div class="statement-dropdown-content" style="border: 1px solid #D4AF37;">
+            <a href="{% url 'export_orders' %}">
+                <i class="fas fa-file-excel" style="color: #4CAF50;"></i>
+                Excel Format
+            </a>
+            <a href="{% url 'export_pdf' %}">
+                <i class="fas fa-file-pdf" style="color: #f44336;"></i>
+                PDF Format
+            </a>
+        </div>
+    </div>
+</div>
 
 <style>
     /* Stats Cards Styling */
@@ -214,6 +233,81 @@
             flex: 1 1 100% !important;
         }
     }
+    /* Naya Professional Statement Button Style */
+.statement-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.statement-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: transparent;
+    border: 2px solid #ddd;
+    border-radius: 30px;
+    padding: 8px 18px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.statement-btn:hover {
+    border-color: #D4AF37;
+    background-color: rgba(212, 175, 55, 0.05);
+}
+
+.statement-btn i.fa-download {
+    font-size: 14px;
+    color: #555;
+}
+
+.statement-dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: calc(100% + 5px);
+    background-color: white;
+    min-width: 140px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    z-index: 1000;
+    overflow: hidden;
+    border: 1px solid #eee;
+}
+
+.statement-dropdown-content a {
+    color: #333;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    transition: background-color 0.2s;
+}
+
+.statement-dropdown-content a:hover {
+    background-color: #f8f9fa;
+    color: #D4AF37;
+}
+
+.statement-dropdown:hover .statement-dropdown-content {
+    display: block;
+}
+
+/* Mobile responsive adjustments */
+@media screen and (max-width: 600px) {
+    .statement-btn-container {
+        justify-content: center !important;
+        margin-top: -10px !important;
+        margin-bottom: 20px !important;
+    }
+}
 </style>
 
 <div class="dashboard-container" style="padding: 40px 5%; max-width: 1400px; margin: 0 auto;">
@@ -236,25 +330,6 @@
         
     </div>
    
-<div class="container-fluid mb-4">
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-8">
-            <div class="row" style="gap: 10px 0;"> <div class="col-12 col-md-6">
-                    <a href="{% url 'export_orders' %}" class="btn-download-statement w-100 shadow-sm" style="background: linear-gradient(135deg, #819014 0%, #a1b024 100%);">
-                        <i class="fas fa-file-excel mr-2"></i> Download Excel
-                    </a>
-                </div>
-
-                <div class="col-12 col-md-6">
-                    <a href="{% url 'export_pdf' %}" class="btn-download-statement w-100 shadow-sm" style="background: linear-gradient(135deg, #d32f2f 0%, #b71c1c 100%);">
-                        <i class="fas fa-file-pdf mr-2"></i> Download PDF
-                    </a>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</div>
 
     <div class="stats-container">
         <div class="stat-card">
